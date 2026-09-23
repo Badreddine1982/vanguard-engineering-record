@@ -1,0 +1,63 @@
+compatibility_evidence:
+  id: runtime.execution.v1.vanguard-runtime
+  schema: "v0.1"
+  status: in_progress
+
+  source:
+    component: vanguard-contracts
+    repository: Badreddine1982/vanguard-contracts
+    contract:
+      id: runtime.execution
+      version: 1.0.0
+      path: contracts/runtime/execution.v1.yaml
+    commit: 775c9850d6a2231cc619b3d64570ca9f08429635
+
+  target:
+    component: vanguard-runtime
+    repository: Badreddine1982/vanguard-runtime
+    branch: init/runtime-scaffold
+    commit: 9ed82687afe24615ad41894934efa78baf07b89b
+
+  evidence:
+    workflow:
+      name: Runtime Contract Test
+      run_id: 35841837937
+      run_number: 21
+      conclusion: success
+    lifecycle_mechanism:
+      definition: pass
+      transition_guards: pass
+      sequence: LOCKED -> VERIFIED -> CONFIRMED -> ADOPTED
+      real_contract_state_changed: false
+    contract_lock:
+      immutable_source: pass
+      pinned_source_reachable: pass
+    runtime_tests:
+      result: pass
+    adoption_gate:
+      automatic_adoption: false
+      explicit_approval_required: true
+
+  compatibility:
+    result: evidence_supported
+    meaning: >
+      The pinned contract identity, lifecycle mechanism, and runtime execution
+      tests are supported by a successful GitHub Actions run. This record does
+      not by itself establish semantic compatibility beyond the tested boundary,
+      and it does not adopt the real contract.
+
+  next:
+    - record independent compatibility evidence
+    - evaluate confirmation criteria
+    - keep real contract adoption explicit
+    - only promote to ADOPTED after explicit approval
+
+  provenance:
+    generated_from:
+      workflow_run: 35841837937
+      head_commit: 9ed82687afe24615ad41894934efa78baf07b89b
+    recorded_at: 2026-09-23T09:15:24Z
+
+governance:
+  rule: "Probability may enter the loop, but it does not leave the loop as truth without confirmation."
+  automatic_adoption: false
