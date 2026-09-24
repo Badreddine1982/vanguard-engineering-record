@@ -1,0 +1,15 @@
+component:
+  id: vanguard-engineering-record
+  version: 0.1.0-poc
+  status: incubator
+
+provides:
+  - engineering.provenance
+  - evidence.records
+
+requires: []
+
+governance:
+  adoption: evidence-gated
+  authority: record-only
+  execution_authority: false

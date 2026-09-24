@@ -1,0 +1,27 @@
+name: Compatibility Confirmation
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - init/engineering-record-scaffold
+
+permissions:
+  contents: read
+
+jobs:
+  confirm-runtime-execution:
+    name: independent compatibility confirmation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout engineering record
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run independent cross-repository compatibility check
+        run: python scripts/confirm_runtime_execution_compatibility.py
