@@ -2,7 +2,7 @@
 
 ## State
 
-VERIFIED / COMPATIBILITY EVIDENCE IN PROGRESS
+CONFIRMED / NOT ADOPTED
 
 ## Sources
 
@@ -36,7 +36,7 @@ This proves that the lifecycle can enforce its declared transition guards and th
 
 The next step is therefore Compatibility Evidence: a machine-readable record tying the exact source contract, exact runtime commit, exact verification run, and observed test results together.
 
-## Compatibility Evidence — in progress
+## Compatibility Evidence — confirmed
 
 Record:
 `records/compatibility/runtime-execution-v1.yaml`
@@ -56,7 +56,7 @@ Evidence anchor:
 - run number: `21`
 - conclusion: `success`
 
-The current record is deliberately marked `in_progress`: the successful workflow establishes a strong first evidence package, but the compatibility claim is not yet promoted to final confirmation or adoption.
+The record is now marked `confirmed` because an independent GitHub Actions workflow successfully verified the exact contract/runtime boundary against immutable source commits. The confirmation is limited to the tested structural boundary; it is not an exhaustive semantic compatibility proof and does not adopt the real contract.
 
 ## Corrective action history
 
@@ -67,13 +67,25 @@ The current record is deliberately marked `in_progress`: the successful workflow
 5. The lifecycle mechanism was added and initially proved with an isolated fixture.
 6. The lifecycle test was strengthened to exercise actual transition guards and reject invalid transitions.
 7. Run #21 completed successfully with all lifecycle, lock, runtime-test, and explicit-adoption-gate steps passing.
-8. Compatibility Evidence has now been opened as a separate machine-readable record.
+8. Compatibility Evidence was opened as a separate machine-readable record.
+9. Independent Compatibility Confirmation run `35997288867` (run #2) completed successfully.
+10. The confirmed evidence record was updated without changing adoption state.
 
 ## Confirmation status
 
-The lifecycle **mechanism** is verified and confirmed by GitHub execution evidence.
+The lifecycle **mechanism** is verified, and the compatibility boundary is now **CONFIRMED** by an independent GitHub execution. The real `runtime.execution` contract remains **not adopted**. Adoption remains explicitly gated.
 
-The real `runtime.execution` contract remains **not adopted**. Compatibility Evidence is in progress; confirmation and adoption remain evidence-gated and require explicit approval.
+## Confirmation evidence
+
+- workflow: `Compatibility Confirmation`
+- run: `35997288867`
+- run number: `2`
+- conclusion: `success`
+- independent check: `pass`
+- source: `vanguard-contracts@775c9850d6a2231cc619b3d64570ca9f08429635`
+- target: `vanguard-runtime@9ed82687afe24615ad41894934efa78baf07b89b`
+- scope: structural contract/runtime boundary
+- adoption: `not_adopted`
 
 ## Governing rule
 
