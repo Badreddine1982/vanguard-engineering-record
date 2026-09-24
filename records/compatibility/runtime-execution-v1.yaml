@@ -1,7 +1,7 @@
 compatibility_evidence:
   id: runtime.execution.v1.vanguard-runtime
   schema: "v0.1"
-  status: in_progress
+  status: confirmed
 
   source:
     component: vanguard-contracts
@@ -20,43 +20,56 @@ compatibility_evidence:
 
   evidence:
     workflow:
-      name: Runtime Contract Test
-      run_id: 35841837937
-      run_number: 21
+      name: Compatibility Confirmation
+      run_id: 35997288867
+      run_number: 2
       conclusion: success
+    independent_check:
+      result: pass
+      boundary: contract/runtime
+      mode: structural
     lifecycle_mechanism:
       definition: pass
       transition_guards: pass
       sequence: LOCKED -> VERIFIED -> CONFIRMED -> ADOPTED
+      confirmed_state: CONFIRMED
       real_contract_state_changed: false
     contract_lock:
       immutable_source: pass
       pinned_source_reachable: pass
     runtime_tests:
       result: pass
+      workflow_run: 35841837937
+      run_number: 21
     adoption_gate:
       automatic_adoption: false
       explicit_approval_required: true
+      state: not_adopted
 
   compatibility:
-    result: evidence_supported
+    result: CONFIRMED
+    scope: structural_boundary
     meaning: >
-      The pinned contract identity, lifecycle mechanism, and runtime execution
-      tests are supported by a successful GitHub Actions run. This record does
-      not by itself establish semantic compatibility beyond the tested boundary,
-      and it does not adopt the real contract.
+      An independent GitHub Actions workflow fetched the exact immutable
+      contract source and exact runtime implementation commits and verified
+      the declared contract/runtime boundary. The confirmation is limited
+      to the tested structural boundary and does not constitute exhaustive
+      semantic compatibility proof.
+    adoption: not_adopted
 
   next:
-    - record independent compatibility evidence
-    - evaluate confirmation criteria
+    - retain confirmed evidence as historical record
+    - evaluate whether broader semantic compatibility evidence is required
     - keep real contract adoption explicit
     - only promote to ADOPTED after explicit approval
 
   provenance:
-    generated_from:
-      workflow_run: 35841837937
-      head_commit: 9ed82687afe24615ad41894934efa78baf07b89b
-    recorded_at: 2026-09-23T09:15:24Z
+    confirmation_workflow_run: 35997288867
+    confirmation_run_number: 2
+    confirmation_merge_ref: 678054360b2513028458562a0b6ff1ecb8af59dc
+    source_commit: 775c9850d6a2231cc619b3d64570ca9f08429635
+    target_commit: 9ed82687afe24615ad41894934efa78baf07b89b
+    confirmed_at: 2026-09-24T12:09:31Z
 
 governance:
   rule: "Probability may enter the loop, but it does not leave the loop as truth without confirmation."
