@@ -6,7 +6,7 @@
 - **Package SHA-256:** `f8aaa2afb46de038790140f9edc26e8f9a569559d0c0a012e6ee1ab497180fd1`
 - **Destination repository:** `Badreddine1982/vanguard-engineering-record`
 - **Working branch:** `transfer/dynamic-admissibility-v0.3.3`
-- **Status:** `BRANCH TRANSFER READ-BACK VERIFIED — PULL REQUEST REVIEW PENDING; NOT MERGED`
+- **Status:** `BRANCH TRANSFER READ-BACK VERIFIED — DRAFT PR #2 OPEN; NOT MERGED`
 
 ## Why this destination
 
@@ -72,4 +72,4 @@ Local reproduction from the hash-verified v0.3.3 package completed successfully:
 
 These are toy checks only; they do not prove the candidate law, adapter soundness, actual MCTS/UCT integration, or system safety.
 
-**Transfer scope:** the branch-level copy and read-back are verified. The pull request has not yet been opened, and the changes are not merged into `main`. Internal Library sources remain intact. No Library retirement/deletion operation has been performed, and the protected Library governance law remains outside this transfer.
+**Transfer scope:** the branch-level copy and read-back are verified. Draft pull request #2 is open for review; the changes are not merged into `main`. Internal Library sources remain intact. No Library retirement/deletion operation has been performed, and the protected Library governance law remains outside this transfer.
