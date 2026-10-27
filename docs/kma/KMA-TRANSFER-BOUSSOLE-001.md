@@ -125,3 +125,20 @@ Direct links:
 2. Continue a version-aware inventory of remaining formal contracts and architecture drafts.
 3. Keep experiments, intake/audit records, package manifests, and ZIP artifacts in their own lifecycle categories.
 4. Do not transfer code or packages in this documentation-first pass unless separately scoped and verified.
+
+## Library storage-retirement event — 2026-10-27
+
+The Library copies of the five artifacts listed below were moved to the Library trash after their GitHub destinations had been verified by exact read-back. This is a storage-retirement event, not permanent-erasure evidence. The Library audit records remain the operational evidence for this event:
+
+- `/LIBRARY-TRANSFER-RETIREMENT-LOG-001.md` — Library ID `libfile_1f1f0b1434b481918aba4490e5389fc3`
+- `/LIBRARY-TRANSFER-RETIREMENT-RESULT-001.md` — Library ID `libfile_490ca307ba748191850220d63970e548`
+
+| Retired Library source copy | Library ID | GitHub destination |
+|---|---|---|
+| `Knowledge_Memory_Architecture_v0.1.md` | `libfile_b792256cd6dc8191b521e0d6510d29a7` | `vanguard-engineering-record/docs/kma/Knowledge_Memory_Architecture_v0.1.md` |
+| `VANGUARD_AI_v0.2_Knowledge_Autonomy_Contract.md` | `libfile_38336feac5a88191be795348f3058d0f` | `vanguard-contracts/contracts/vanguard-ai/VANGUARD_AI_v0.2_Knowledge_Autonomy_Contract.md` |
+| `VANGUARD_AI_v0.3_Harness_Adapter_Contract.md` | `libfile_a86c8d616ec88191a50535e6784e0be1` | `vanguard-contracts/contracts/vanguard-ai/VANGUARD_AI_v0.3_Harness_Adapter_Contract.md` |
+| `VANGUARD_AI_v0.4_MCTS_System_Architecture.md` | `libfile_9af19d4289bc8191aabaf772ac7cd395` | `vanguard-contracts/contracts/vanguard-ai/VANGUARD_AI_v0.4_MCTS_System_Architecture.md` |
+| `VERITAS_AIXI_v0.2_CONTRACTS.md` | `libfile_a6377d25537081918b5091355282b7f5` | `vanguard-contracts/contracts/veritas-aixi/VERITAS_AIXI_v0.2_CONTRACTS.md` |
+
+**Clarification of historical wording:** Earlier sections saying that the Library source had not been deleted describe the state at the time of the original transfer. This dated event supersedes that source-handling state for these five exact IDs only. The protected internal Library law/governance records were not targeted. Artifact proposal, verification, confirmation, and adoption statuses remain unchanged.
