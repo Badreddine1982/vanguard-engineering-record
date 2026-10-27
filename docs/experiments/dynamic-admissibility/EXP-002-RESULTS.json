@@ -1,0 +1,39 @@
+{
+  "experiment_id": "EXP-002",
+  "name": "Bare Admissibility Relation Sufficiency Check",
+  "method": "Constructed indistinguishability/counterexample pairs",
+  "runtime": "Python 3 standard library only",
+  "cases": [
+    {
+      "case": "representation_level_not_encoded",
+      "same_bare_relation_signature": true,
+      "extra_relation_A": "representation_A[s] > representation_A[t]",
+      "expected_mode_A": "FOLD",
+      "extra_relation_B": "representation_B[s] < representation_B[t]",
+      "expected_mode_B": "UNFOLD",
+      "bare_relation_can_distinguish": false,
+      "pass": true
+    },
+    {
+      "case": "dynamic_margin_not_encoded",
+      "same_bare_relation_signature": true,
+      "extra_relation_A": "dynamic_margin=0.01",
+      "expected_mode_A": "SLOWDOWN",
+      "extra_relation_B": "dynamic_margin=0.5",
+      "expected_mode_B": "CONTINUE",
+      "bare_relation_can_distinguish": false,
+      "pass": true
+    }
+  ],
+  "cases_total": 2,
+  "cases_passed": 2,
+  "all_cases_pass": true,
+  "finding": "A bare binary admissibility relation over transitions does not uniquely determine all operational modes. Representation ordering is needed to distinguish FOLD from UNFOLD; a dynamic/boundary measure is needed to distinguish SLOWDOWN from CONTINUE.",
+  "interpretation": "This is a bounded counterexample to sufficiency of the bare relation, not a refutation of a richer unified transition law. It supports using a structured relational contract without requiring a predefined fixed list of semantic coordinates.",
+  "limitations": [
+    "Constructed examples only; no empirical workload.",
+    "No actual MCTS/UCT implementation.",
+    "No proof that the proposed richer relation is minimal or universal.",
+    "The dynamic margin values illustrate missing information; they are not calibrated thresholds."
+  ]
+}
