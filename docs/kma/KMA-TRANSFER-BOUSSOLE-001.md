@@ -3,7 +3,7 @@
 - **Project:** KMA — Knowledge Memory Architecture
 - **Version:** 0.1
 - **Updated:** 2026-10-27
-- **State:** FIRST DOCUMENT COPIED TO GITHUB; EXACT READ-BACK VERIFIED
+- **State:** FIVE DOCUMENTATION ARTIFACTS TRANSFERRED; EXACT READ-BACK VERIFIED
 - **Adoption:** NOT ADOPTED. The source remains an architectural draft; this transfer does not approve implementation or adoption.
 - **Library source:** `Knowledge_Memory_Architecture_v0.1.md` — Library file ID `libfile_b792256cd6dc8191b521e0d6510d29a7`.
 - **GitHub destination:** `Badreddine1982/vanguard-engineering-record/docs/kma/Knowledge_Memory_Architecture_v0.1.md`, branch `main`.
@@ -43,7 +43,7 @@ These roles are practical routing guidance, not a claim that all such components
 
 ## Current boundary
 
-The KMA architecture draft and four contract documents are now copied and exact-read-back verified (see transfer records below). No canonical KMA record schema, KMA implementation, or integration has been transferred or validated by this operation.
+Five documentation artifacts are copied and exact-read-back verified: one KMA architecture draft and four contract documents (see transfer records below). No canonical KMA record schema, KMA implementation, or integration has been transferred or validated by this operation.
 
 
 ## Additional transfer — Knowledge Autonomy Contract
@@ -91,4 +91,37 @@ Direct links:
 - v0.4 explicitly depends on v0.3; both remain proposals and do not imply Master reconciliation or implementation.
 - The VERITAS-AIXI contract remains an experimental baseline; its transfer does not establish fresh test execution.
 - Library originals were not deleted or modified.
-- The current compass now tracks four copied source documents across KMA/VANGUARD/VERITAS contract work plus the KMA architecture draft; it is a transfer register, not an adoption register.
+- The current compass tracks five copied documentation artifacts: one KMA architecture draft and four VANGUARD/VERITAS contract documents. It is a transfer register, not an adoption register.
+
+
+## Inventory continuation — version and routing rules (2026-10-27)
+
+### Version-selection rule confirmed by the user
+
+- When two Library entries represent successive versions of the same artifact, transfer the latest version only.
+- Do not transfer an older version as a separate current artifact merely because it remains in the Library.
+- Preserve version lineage and source history in the register; do not delete or overwrite the older Library source without a separate lifecycle decision.
+- A matching filename or matching content alone is not a sufficient version-ordering rule. Use the documented version lineage and source identity.
+
+### Pending source-resolution item
+
+- Artifact: `STRUCTURED-TRANSITION-CONTRACT-001.md` in `/PRJ-DYNAMIC-ADMISSIBILITY-001/`.
+- Current Library entry: `libfile_924a784a2d9c8191808ed7f6bc72c798`, created 2026-10-16.
+- Another Library entry with the same filename exists: `libfile_e6934c88e964819189226b5070acb3a1`, created 2026-10-15.
+- Both currently read as `Version: 0.1` and the complete text is identical in the read-back performed on 2026-10-27. The user's stated version history is v0.0.1 updated to v0.0.2, but that lineage is not yet represented in the retrieved file text/metadata.
+- **Disposition: HOLD — DO NOT TRANSFER either entry until the authoritative v0.0.2 source is identified.** Do not label this as a content conflict or choose by timestamp alone.
+- The project folder also contains experiment records/results, a proof roadmap, a kernel-safety lemma, lifecycle registry events, intake audits, and package artifacts (including `Dynamic-Admissibility-Project-Package-v0.3.3.zip`). Route each by artifact type; do not classify the entire project folder as contracts.
+
+### Repository baseline checked
+
+- `vanguard-contracts/main`: the four transferred contract files are present under `contracts/vanguard-ai/` and `contracts/veritas-aixi/`.
+- `vanguard-engineering-record/main`: KMA architecture draft and this compass are present under `docs/kma/`.
+- `vanguard-runtime/main`: currently contains only `.gitignore`, `LICENSE`, and `README.md` in the inspected tree; no KMA runtime implementation was identified.
+- `vanguard-ai/main`: executable application files and tests are present; no contract-document placement is inferred from that code inventory.
+
+### Next resume action
+
+1. Identify the actual Library source/version lineage for `STRUCTURED-TRANSITION-CONTRACT-001` v0.0.2; then compare it against the GitHub tree before deciding its destination.
+2. Continue a version-aware inventory of remaining formal contracts and architecture drafts.
+3. Keep experiments, intake/audit records, package manifests, and ZIP artifacts in their own lifecycle categories.
+4. Do not transfer code or packages in this documentation-first pass unless separately scoped and verified.
