@@ -1,0 +1,321 @@
+{
+  "experiment_id": "EXP-003",
+  "name": "Structured Transition Contract Across Numeric and Symbolic Adapters",
+  "implementation": "shared deterministic toy kernel with numeric/risk and symbolic/evidence partial-order adapters; no real MCTS/UCT",
+  "checks_total": 13,
+  "checks_passed": 13,
+  "all_checks_pass": true,
+  "checks": [
+    {
+      "case": "inadmissible_preference_cannot_override_law",
+      "pass": true,
+      "expected": "select authorized admissible alternative; never activate preferred invalid candidate",
+      "result": {
+        "effects": [
+          "REDIRECT"
+        ],
+        "proposed_id": "risky",
+        "selected_id": "safe",
+        "branch_ids": [
+          "safe"
+        ],
+        "feasible_ids": [
+          "safe"
+        ],
+        "activated": true,
+        "proposed_dt": 1.0,
+        "effective_dt": 1.0,
+        "effective_transition_revalidated": true,
+        "unresolved_ids": [],
+        "representation_relation": "SAME",
+        "evidence_ref": "evidence:numeric",
+        "preference_overrode_admissibility": false
+      }
+    },
+    {
+      "case": "all_valid_alternatives_preserved",
+      "pass": true,
+      "expected": "retain both admissible authorized successors",
+      "result": {
+        "effects": [
+          "BRANCH"
+        ],
+        "proposed_id": "a",
+        "selected_id": "a",
+        "branch_ids": [
+          "a",
+          "b"
+        ],
+        "feasible_ids": [
+          "a",
+          "b"
+        ],
+        "activated": true,
+        "proposed_dt": 1.0,
+        "effective_dt": 1.0,
+        "effective_transition_revalidated": true,
+        "unresolved_ids": [],
+        "representation_relation": "SAME",
+        "evidence_ref": "evidence:numeric",
+        "preference_overrode_admissibility": false
+      }
+    },
+    {
+      "case": "dynamic_horizon_reduces_step",
+      "pass": true,
+      "expected": "reduce proposed horizon only with successful effective-transition revalidation",
+      "result": {
+        "effects": [
+          "SLOWDOWN"
+        ],
+        "proposed_id": "slow-path",
+        "selected_id": "slow-path",
+        "branch_ids": [
+          "slow-path"
+        ],
+        "feasible_ids": [
+          "slow-path"
+        ],
+        "activated": true,
+        "proposed_dt": 1.0,
+        "effective_dt": 0.25,
+        "effective_transition_revalidated": true,
+        "unresolved_ids": [],
+        "representation_relation": "SAME",
+        "evidence_ref": "evidence:numeric",
+        "preference_overrode_admissibility": false
+      }
+    },
+    {
+      "case": "representation_order_yields_fold_observation",
+      "pass": true,
+      "expected": "numeric representation comparator yields FOLD",
+      "result": {
+        "effects": [
+          "FOLD"
+        ],
+        "proposed_id": "folded",
+        "selected_id": "folded",
+        "branch_ids": [
+          "folded"
+        ],
+        "feasible_ids": [
+          "folded"
+        ],
+        "activated": true,
+        "proposed_dt": 1.0,
+        "effective_dt": 1.0,
+        "effective_transition_revalidated": true,
+        "unresolved_ids": [],
+        "representation_relation": "LOWER",
+        "evidence_ref": "evidence:numeric",
+        "preference_overrode_admissibility": false
+      }
+    },
+    {
+      "case": "representation_order_yields_unfold_observation",
+      "pass": true,
+      "expected": "numeric representation comparator yields UNFOLD",
+      "result": {
+        "effects": [
+          "UNFOLD"
+        ],
+        "proposed_id": "expanded",
+        "selected_id": "expanded",
+        "branch_ids": [
+          "expanded"
+        ],
+        "feasible_ids": [
+          "expanded"
+        ],
+        "activated": true,
+        "proposed_dt": 1.0,
+        "effective_dt": 1.0,
+        "effective_transition_revalidated": true,
+        "unresolved_ids": [],
+        "representation_relation": "HIGHER",
+        "evidence_ref": "evidence:numeric",
+        "preference_overrode_admissibility": false
+      }
+    },
+    {
+      "case": "no_admissible_successor_terminates",
+      "pass": true,
+      "expected": "no exception when all known successors violate the numeric toy constraint",
+      "result": {
+        "effects": [
+          "TERMINATE"
+        ],
+        "proposed_id": "blocked",
+        "selected_id": null,
+        "branch_ids": [],
+        "activated": false,
+        "feasible_ids": [],
+        "reason": "no known admissible successor in defined candidate set"
+      }
+    },
+    {
+      "case": "validity_does_not_imply_activation",
+      "pass": true,
+      "expected": "valid transition remains dormant without activation authorization",
+      "result": {
+        "effects": [
+          "HOLD_DORMANT"
+        ],
+        "proposed_id": "dormant",
+        "selected_id": null,
+        "branch_ids": [],
+        "activated": false,
+        "feasible_ids": [
+          "dormant"
+        ],
+        "reason": "admissible successors exist but none can be activated"
+      }
+    },
+    {
+      "case": "symbolic_adapter_uses_same_kernel",
+      "pass": true,
+      "expected": "same generic kernel handles symbolic evidence plus partial-order relations",
+      "result": {
+        "effects": [
+          "REDIRECT",
+          "FOLD"
+        ],
+        "proposed_id": "symbolic-red",
+        "selected_id": "symbolic-blue",
+        "branch_ids": [
+          "symbolic-blue"
+        ],
+        "feasible_ids": [
+          "symbolic-blue"
+        ],
+        "activated": true,
+        "proposed_dt": 1.0,
+        "effective_dt": 1.0,
+        "effective_transition_revalidated": true,
+        "unresolved_ids": [],
+        "representation_relation": "LOWER",
+        "evidence_ref": "evidence:verified",
+        "preference_overrode_admissibility": false
+      }
+    },
+    {
+      "case": "irrelevant_symbol_renaming_invariance",
+      "pass": true,
+      "expected": "renaming symbolic identifiers without changing relations preserves behavior",
+      "result": {
+        "effects": [
+          "REDIRECT",
+          "FOLD"
+        ],
+        "proposed_id": "renamed-x",
+        "selected_id": "renamed-y",
+        "branch_ids": [
+          "renamed-y"
+        ],
+        "feasible_ids": [
+          "renamed-y"
+        ],
+        "activated": true,
+        "proposed_dt": 1.0,
+        "effective_dt": 1.0,
+        "effective_transition_revalidated": true,
+        "unresolved_ids": [],
+        "representation_relation": "LOWER",
+        "evidence_ref": "evidence:verified",
+        "preference_overrode_admissibility": false
+      }
+    },
+    {
+      "case": "failed_effective_revalidation_blocks_activation",
+      "pass": true,
+      "expected": "a shortened proposal is not activated when effective-transition revalidation fails",
+      "result": {
+        "effects": [
+          "HOLD_REVALIDATION"
+        ],
+        "proposed_id": "shortened-but-invalid",
+        "selected_id": null,
+        "branch_ids": [],
+        "activated": false,
+        "feasible_ids": [],
+        "revalidation_failed_ids": [
+          "shortened-but-invalid"
+        ],
+        "reason": "effective transition failed adapter revalidation"
+      }
+    },
+    {
+      "case": "unknown_candidate_fails_closed_without_false_termination",
+      "pass": true,
+      "expected": "unknown candidate cannot activate and is not misreported as proven impossibility",
+      "result": {
+        "effects": [
+          "HOLD_UNRESOLVED"
+        ],
+        "proposed_id": "black-swan-unknown",
+        "selected_id": null,
+        "branch_ids": [],
+        "activated": false,
+        "feasible_ids": [],
+        "unresolved_ids": [
+          "black-swan-unknown"
+        ],
+        "reason": "unresolved candidates prevent a claim of proven impossibility"
+      }
+    },
+    {
+      "case": "equal_preference_tie_preserves_freedom",
+      "pass": true,
+      "expected": "equal valid alternatives are preserved without arbitrary identifier-based selection or activation",
+      "result": {
+        "effects": [
+          "REDIRECT",
+          "BRANCH"
+        ],
+        "proposed_id": "invalid-proposal",
+        "selected_id": null,
+        "branch_ids": [
+          "alpha",
+          "zeta"
+        ],
+        "feasible_ids": [
+          "alpha",
+          "zeta"
+        ],
+        "activated": false,
+        "deferred_tie_ids": [
+          "alpha",
+          "zeta"
+        ],
+        "unresolved_ids": [],
+        "reason": "equally preferred admissible alternatives retained; no arbitrary tie-break or activation",
+        "preference_overrode_admissibility": false
+      }
+    },
+    {
+      "case": "capability_absence_blocks_activation",
+      "pass": true,
+      "expected": "admissibility cannot grant a missing capability",
+      "result": {
+        "effects": [
+          "HOLD_DORMANT"
+        ],
+        "proposed_id": "missing-capability",
+        "selected_id": null,
+        "branch_ids": [],
+        "activated": false,
+        "feasible_ids": [
+          "missing-capability"
+        ],
+        "reason": "admissible successors exist but none can be activated"
+      }
+    }
+  ],
+  "interpretation": "Passing supports interface consistency for the constructed cases only. It does not prove a universal or dimension-independent law, minimality of the contract, or soundness of arbitrary domain adapters.",
+  "known_limitations": [
+    "The hard-constraint and effective-revalidation results are supplied by domain adapters; correctness of those facts is not proved by the kernel.",
+    "The dynamic horizon is a toy bound, not an empirically calibrated time-evolution model.",
+    "No actual MCTS/UCT, formal proof, empirical workload, or external validation is included."
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "experiment_id": "EXP-001",
+  "experiment_name": "Unified State Transition Law \u2014 Toy Model",
+  "implementation_type": "deterministic toy resolver; not MCTS/UCT",
+  "cases_total": 6,
+  "cases_passed": 6,
+  "all_cases_pass": true,
+  "results": [
+    {
+      "mode": "REDIRECT",
+      "proposed_action": "risky_unfold",
+      "proposed_admissible": false,
+      "feasible_actions": [
+        "safe_continue"
+      ],
+      "selected_action": "safe_continue",
+      "activated": true,
+      "validity_separate_from_activation": true,
+      "case": "inadmissible_preference_redirected_to_feasible_alternative",
+      "expected_mode": "REDIRECT",
+      "pass": true
+    },
+    {
+      "mode": "BRANCH",
+      "proposed_action": "continue_a",
+      "proposed_admissible": true,
+      "feasible_actions": [
+        "continue_a",
+        "continue_b"
+      ],
+      "selected_action": "continue_a",
+      "activated": true,
+      "validity_separate_from_activation": true,
+      "case": "multiple_feasible_successors_branch",
+      "expected_mode": "BRANCH",
+      "pass": true
+    },
+    {
+      "mode": "SLOWDOWN",
+      "proposed_action": "near_limit_continue",
+      "proposed_admissible": true,
+      "feasible_actions": [
+        "near_limit_continue"
+      ],
+      "selected_action": "near_limit_continue",
+      "activated": true,
+      "validity_separate_from_activation": true,
+      "case": "near_boundary_slowdown",
+      "expected_mode": "SLOWDOWN",
+      "pass": true
+    },
+    {
+      "mode": "FOLD",
+      "proposed_action": "fold",
+      "proposed_admissible": true,
+      "feasible_actions": [
+        "fold"
+      ],
+      "selected_action": "fold",
+      "activated": true,
+      "validity_separate_from_activation": true,
+      "case": "lower_representation_fold",
+      "expected_mode": "FOLD",
+      "pass": true
+    },
+    {
+      "mode": "UNFOLD",
+      "proposed_action": "unfold",
+      "proposed_admissible": true,
+      "feasible_actions": [
+        "unfold"
+      ],
+      "selected_action": "unfold",
+      "activated": true,
+      "validity_separate_from_activation": true,
+      "case": "higher_representation_unfold",
+      "expected_mode": "UNFOLD",
+      "pass": true
+    },
+    {
+      "mode": "TERMINATE",
+      "proposed_action": "too_risky",
+      "proposed_admissible": false,
+      "feasible_actions": [],
+      "selected_action": null,
+      "activated": false,
+      "validity_separate_from_activation": true,
+      "case": "no_admissible_successor_terminate",
+      "expected_mode": "TERMINATE",
+      "pass": true
+    }
+  ],
+  "interpretation": "Passing cases establish only internal consistency for these hand-authored toy rules. They do not establish a dimension-independent mathematical law or general system validity."
+}
