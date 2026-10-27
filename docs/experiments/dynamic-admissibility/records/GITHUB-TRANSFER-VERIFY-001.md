@@ -6,7 +6,8 @@
 - **Source:** `/SKY-A/PRJ-DYNAMIC-ADMISSIBILITY-001/`
 - **Destination repository:** `Badreddine1982/vanguard-engineering-record`
 - **Destination branch:** `transfer/dynamic-admissibility-v0.3.3`
-- **Status:** `BRANCH CONTENTS AND READ-BACK VERIFIED — PULL REQUEST REVIEW PENDING — NOT MERGED`
+- **Review gate:** [Draft pull request #2](https://github.com/Badreddine1982/vanguard-engineering-record/pull/2) — open, not merged
+- **Status:** `BRANCH CONTENTS AND READ-BACK VERIFIED — DRAFT PULL REQUEST #2 OPEN — NOT MERGED`
 - **Project lifecycle:** `INCUBATOR / NOT ADOPTED`
 
 ## 1. Transfer inventory
