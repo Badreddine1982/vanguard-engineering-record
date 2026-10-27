@@ -44,3 +44,23 @@ These roles are practical routing guidance, not a claim that all such components
 ## Current boundary
 
 Only the architecture draft listed above has been copied in this KMA pass. No KMA code, canonical schema, or integration has been transferred or validated by this operation.
+
+
+## Additional transfer — Knowledge Autonomy Contract
+
+- **Library source:** `VANGUARD_AI_v0.2_Knowledge_Autonomy_Contract.md` — Library file ID `libfile_38336feac5a88191be795348f3058d0f`.
+- **Destination:** `Badreddine1982/vanguard-contracts/contracts/vanguard-ai/VANGUARD_AI_v0.2_Knowledge_Autonomy_Contract.md`, branch `main`.
+- **Commit:** `144ae8d9394ee57577183cdd0f52f8d21acbcad7`.
+- **GitHub blob SHA (read-back):** `557de5e8b8aad2751de3a65407cebe9ecc77b450`.
+- **Read-back check:** PASS — exact content comparison with the Library source passed.
+- **Source status preserved:** `PROPOSED / SECTION-LEVEL BASELINE`. This is a transfer of the proposed contract text, not proof that its requirements are implemented, reconciled with the Master Page, or adopted.
+
+Link: https://github.com/Badreddine1982/vanguard-contracts/blob/main/contracts/vanguard-ai/VANGUARD_AI_v0.2_Knowledge_Autonomy_Contract.md
+
+## Updated transfer boundary
+
+Two documentation artifacts have been copied and read-back verified:
+1. The KMA Storage Foundation architecture draft in `vanguard-engineering-record`.
+2. The VANGUARD AI v0.2 Knowledge Infrastructure & Autonomous Execution Contract in `vanguard-contracts`.
+
+No executable KMA code has been transferred. The two source documents remain in the Library. The KMA architecture is still a draft, and the Knowledge Autonomy Contract remains proposed. Neither transfer constitutes adoption or integration.
