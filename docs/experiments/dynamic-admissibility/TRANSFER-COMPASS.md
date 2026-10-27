@@ -61,4 +61,4 @@ The three differences were content-reviewed, not treated as evidence that the ro
 
 ## Current boundary
 
-Only this transfer compass has been added to the working branch. No Dynamic Admissibility project file or executable source has been committed yet. The Library source remains intact.
+Committed to the working branch: this transfer compass, `LIBRARY-INTAKE-AUDIT-004.md`, and `REGISTRY-EVENT-005.md`. These two records document the **internal Library** transfer closure, not the external GitHub transfer. Project definition, experiment protocols/results, candidate contract, proof roadmap, and experiment source files have not yet been committed. The Library source remains intact.
