@@ -12,7 +12,7 @@
 
 ## 1. Transfer inventory
 
-The branch contains **26 project artifacts**:
+The branch contains **26 transferred payload artifacts plus this verification record (27 changed files in pull request #2)**:
 - 20 files from the v0.3.3 package baseline, including project documentation, EXP-001/002/003 protocols and results, proof roadmap, kernel-safety lemma, transition contract, historical records, and SHA-256 manifest.
 - 2 later Library closure records: `LIBRARY-INTAKE-AUDIT-004.md` and `REGISTRY-EVENT-005.md`.
 - 1 transfer compass.
