@@ -6,7 +6,7 @@
 - **Package SHA-256:** `f8aaa2afb46de038790140f9edc26e8f9a569559d0c0a012e6ee1ab497180fd1`
 - **Destination repository:** `Badreddine1982/vanguard-engineering-record`
 - **Working branch:** `transfer/dynamic-admissibility-v0.3.3`
-- **Status:** `SOURCE RECONCILED — COMPASS ONLY; PROJECT FILES NOT YET TRANSFERRED`
+- **Status:** `BRANCH TRANSFER READ-BACK VERIFIED — PULL REQUEST REVIEW PENDING; NOT MERGED`
 
 ## Why this destination
 
@@ -61,4 +61,15 @@ The three differences were content-reviewed, not treated as evidence that the ro
 
 ## Current boundary
 
-Committed to the working branch: this transfer compass, `LIBRARY-INTAKE-AUDIT-004.md`, and `REGISTRY-EVENT-005.md`. These two records document the **internal Library** transfer closure, not the external GitHub transfer. Project definition, experiment protocols/results, candidate contract, proof roadmap, and experiment source files have not yet been committed. The Library source remains intact.
+The branch now contains the 20 files from the v0.3.3 package baseline, the two later Library closure records, this transfer compass, and all three experiment source files: **26 project artifacts total**. The experiment sources were committed after the documentation-first stage.
+
+Direct destination read-back matched all 17 package documentation files sourced from Library records and all three experiment source files; the two later closure records also matched their Library versions. The package-only versions of `PROJECT.md`, `README.md`, and `TRANSFER-RESUME-001.md` were additionally checked by comparing their Git blob SHAs against the exact extracted package bytes. The compass itself was read back from the destination.
+
+Local reproduction from the hash-verified v0.3.3 package completed successfully:
+- EXP-001: 6/6 constructed checks passed.
+- EXP-002: 2/2 constructed checks passed.
+- EXP-003: 13/13 constructed interface checks passed.
+
+These are toy checks only; they do not prove the candidate law, adapter soundness, actual MCTS/UCT integration, or system safety.
+
+**Transfer scope:** the branch-level copy and read-back are verified. The pull request has not yet been opened, and the changes are not merged into `main`. Internal Library sources remain intact. No Library retirement/deletion operation has been performed, and the protected Library governance law remains outside this transfer.
