@@ -61,7 +61,7 @@ The three differences were content-reviewed, not treated as evidence that the ro
 
 ## Current boundary
 
-The branch now contains the 20 files from the v0.3.3 package baseline, the two later Library closure records, this transfer compass, and all three experiment source files: **26 project artifacts total**. The experiment sources were committed after the documentation-first stage.
+The branch contains 26 transferred payload artifacts: 20 files from the v0.3.3 package baseline, the two later Library closure records, this transfer compass, and all three experiment source files. The additional `GITHUB-TRANSFER-VERIFY-001.md` record makes **27 changed files in draft PR #2**. The experiment sources were committed after the documentation-first stage.
 
 Direct destination read-back matched all 17 package documentation files sourced from Library records and all three experiment source files; the two later closure records also matched their Library versions. The package-only versions of `PROJECT.md`, `README.md`, and `TRANSFER-RESUME-001.md` were additionally checked by comparing their Git blob SHAs against the exact extracted package bytes. The compass itself was read back from the destination.
 
