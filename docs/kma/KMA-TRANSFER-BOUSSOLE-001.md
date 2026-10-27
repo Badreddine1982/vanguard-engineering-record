@@ -43,7 +43,7 @@ These roles are practical routing guidance, not a claim that all such components
 
 ## Current boundary
 
-Only the architecture draft listed above has been copied in this KMA pass. No KMA code, canonical schema, or integration has been transferred or validated by this operation.
+The KMA architecture draft and four contract documents are now copied and exact-read-back verified (see transfer records below). No canonical KMA record schema, KMA implementation, or integration has been transferred or validated by this operation.
 
 
 ## Additional transfer — Knowledge Autonomy Contract
@@ -59,9 +59,12 @@ Link: https://github.com/Badreddine1982/vanguard-contracts/blob/main/contracts/v
 
 ## Updated transfer boundary
 
-Two documentation artifacts have been copied and read-back verified:
+Five documentation artifacts have been copied and read-back verified:
 1. The KMA Storage Foundation architecture draft in `vanguard-engineering-record`.
 2. The VANGUARD AI v0.2 Knowledge Infrastructure & Autonomous Execution Contract in `vanguard-contracts`.
+3. The VANGUARD AI v0.3 Harness Adapter contract in `vanguard-contracts`.
+4. The VANGUARD AI v0.4 MCTS System Architecture contract in `vanguard-contracts`.
+5. The VERITAS-AIXI v0.2 Core Contract Set in `vanguard-contracts`.
 
 No executable KMA code has been transferred. The two source documents remain in the Library. The KMA architecture is still a draft, and the Knowledge Autonomy Contract remains proposed. Neither transfer constitutes adoption or integration.
 
