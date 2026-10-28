@@ -1,0 +1,67 @@
+semantic_confirmation:
+  id: runtime.execution.v2.semantic-confirm-03
+  schema: "v0.1"
+  status: candidate_checks_passed_review_pending
+
+  source:
+    component: vanguard-contracts
+    repository: Badreddine1982/vanguard-contracts
+    contract:
+      id: runtime.execution
+      version: 2.0.0
+      path: contracts/runtime/execution.v2.yaml
+      commit: 108b5b2cf52932d5807144b4b6ba00f4065e2498
+
+  target:
+    component: vanguard-runtime
+    repository: Badreddine1982/vanguard-runtime
+    branch: init/runtime-scaffold
+    tested_runtime_commit: 1632318bf8d1e5a26b379f206fe3ab49d5740371
+
+  tests:
+    runtime_workflow:
+      run_id: 40654822154
+      run_number: 37
+      conclusion: success
+      url: "https://github.com/Badreddine1982/vanguard-runtime/actions/runs/40654822154"
+      scope:
+        - contract lock verification
+        - lifecycle verification and fixture
+        - runtime unit tests
+        - explicit adoption gate
+
+    semantic_confirmation:
+      workflow: SEMANTIC-CONFIRM-03
+      status: pending_new_workflow_run
+      previous_script_run:
+        run_id: 40654903824
+        run_number: 35
+        conclusion: success
+        note: "The updated semantic script passed under the old workflow display name; a new run is required after renaming."
+
+    structural_compatibility:
+      workflow: Compatibility Confirmation
+      run_id: 40654903986
+      run_number: 43
+      conclusion: success
+      scope: "Structural assertions against the exact v2 contract and runtime commits."
+
+  checks:
+    valid_request_and_audit_event: pass
+    deterministic_validation_errors_and_audit_events: pass
+    cooperative_long_running_action_cancelled_at_deadline: pass
+    cancellation_suppression_reported_as_EXECUTION_STATE_UNKNOWN: pass
+    audit_sink_failure_fails_closed: pass
+    schema_contract_version_alignment: pass
+    production_side_effect_containment: not_confirmed
+    hard_preemption_of_non_cooperative_executor: not_guaranteed
+
+  interpretation:
+    - "The tested timeout is an asyncio cooperative cancellation deadline, not an operating-system hard kill."
+    - "An executor that suppresses cancellation is reported as EXECUTION_STATE_UNKNOWN; its side effects remain unknown."
+    - "Production executors must document and test their own cancellation and side-effect guarantees."
+
+  governance:
+    adoption: not_adopted
+    automatic_adoption: false
+    merge_authorized: false
