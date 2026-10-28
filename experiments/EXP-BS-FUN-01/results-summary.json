@@ -1,0 +1,44 @@
+{
+  "experiment_id": "EXP-BS-FUN-01",
+  "version": "0.1.0",
+  "run_status": "EXECUTED_SYNTHETIC_DEMONSTRATOR_NOT_VALIDATED",
+  "parameters": {
+    "n_problems": 40,
+    "width": 24,
+    "cold_budget": 8,
+    "informed_budget": 8,
+    "seed": 20261028,
+    "novelty_weight": 0.22
+  },
+  "summary": {
+    "cold": {
+      "trials": 40,
+      "successes": 15,
+      "success_rate": 0.375,
+      "mean_evaluated_until_stop": 6.4,
+      "mean_unique_candidates": 6.4
+    },
+    "informed": {
+      "trials": 40,
+      "successes": 25,
+      "success_rate": 0.625,
+      "mean_evaluated_until_stop": 4.8,
+      "mean_unique_candidates": 4.8
+    },
+    "fresh_control": {
+      "trials": 40,
+      "successes": 15,
+      "success_rate": 0.375,
+      "mean_evaluated_until_stop": 6.725,
+      "mean_unique_candidates": 6.725
+    },
+    "informed_minus_fresh_successes": 10
+  },
+  "limits": [
+    "synthetic planted-target benchmark",
+    "single fixed-seed suite",
+    "not a real MCTS/AIXI/Fold-Unfold evaluation",
+    "structural Fold/Unfold preservation not tested",
+    "not adopted"
+  ]
+}
