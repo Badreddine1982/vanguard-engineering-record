@@ -1,0 +1,27 @@
+{
+  "record_id": "VSC-T0-2026-10-28-002",
+  "package_version": "v0.3.1",
+  "scope": "source identity, DOCX container integrity, manifest hashes, and deterministic static markers only",
+  "execution_boundary": "submitted AGI source was NOT imported or executed",
+  "source_file": "Epistemology_V9.0_Source.docx",
+  "source_bytes": 22423,
+  "source_sha256": "e3087ac7a077da0bd3ef924838f177496b3f2b44025b7da981dff481534ce316",
+  "isolated_extraction": true,
+  "legacy_v0_2_package_present": false,
+  "runs": [
+    {"run": 1, "exit_code": 0, "overall": "PASS", "result_sha256": "ba89c75eec4acc128449955369e43eb428f5e7ef16daec606fc061e9039b0886"},
+    {"run": 2, "exit_code": 0, "overall": "PASS", "result_sha256": "ba89c75eec4acc128449955369e43eb428f5e7ef16daec606fc061e9039b0886"}
+  ],
+  "archive": {
+    "members": 9,
+    "zip_integrity": "PASS",
+    "sha256": "917583cd5b643107b7e14f2f39539f58637fa43bd89b7a5a81f4ace3fb5cd5a0",
+    "bytes": 37215
+  },
+  "limitations": [
+    "T0 does not execute the submitted AGI source.",
+    "T0 does not establish runtime completeness, correctness, security, performance, quantum execution, or adoption.",
+    "T1-T12 remain NOT RUN."
+  ],
+  "overall": "PASS"
+}
