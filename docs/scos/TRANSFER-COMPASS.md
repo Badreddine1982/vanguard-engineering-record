@@ -10,7 +10,7 @@
 - Library destination: `/VANGUARD-SCOS-INTAKE/VANGUARD_SCOS_Intake_Completion_Package_v0.3.1.zip`
 - GitHub repository: `Badreddine1982/vanguard-engineering-record`
 - Working branch: `transfer/vanguard-scos-v0.3.1`
-- State: `PACKAGE BUILT / ISOLATED T0 PASS (LIMITED) / TRANSFER REVIEW OPEN`
+- State: `PACKAGE BUILT / LIBRARY READ-BACK VERIFIED / T0 ISOLATED PASS / GITHUB EVIDENCE MERGED / BINARY GITHUB PUBLICATION OPEN`
 
 ## Defect and correction
 
@@ -47,9 +47,9 @@ This PR transfers the auditable text records, manifest, T0 result record, and T0
 
 ## Transfer gates still open
 
-1. Read back this branch's committed files and compare hashes with the Library package contents.
-2. Review/merge the GitHub pull request; branch presence is not merge completion.
-3. Confirm Library read-back of the exact v0.3.1 path, size, and SHA-256.
+1. The evidence/documentation PR is merged to `main` (PR #3; merge commit `fbe98f7f5d41e7babd3fdd71a12a4742d0a64a00`).
+2. The v0.3.1 ZIP is in the Library and was read back byte-for-byte; size and SHA-256 match the recorded values.
+3. The binary ZIP itself is not included in GitHub; publishing it as a GitHub release/repository asset remains open.
 4. Keep the older v0.3 package as historical evidence; do not silently overwrite or delete it.
 5. Do not mark T1–T12 as passed or promote any component based on this correction.
 
