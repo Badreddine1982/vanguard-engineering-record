@@ -1,4 +1,4 @@
-name: SEMANTIC-CONFIRM-01
+name: SEMANTIC-CONFIRM-02
 
 on:
   pull_request:
@@ -23,5 +23,5 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Execute SEMANTIC-CONFIRM-01
+      - name: Execute SEMANTIC-CONFIRM-02
         run: python scripts/semantic_confirm_runtime_execution.py
