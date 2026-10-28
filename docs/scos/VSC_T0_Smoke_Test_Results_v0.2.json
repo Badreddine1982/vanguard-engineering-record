@@ -1,27 +1,50 @@
 {
   "record_id": "VSC-T0-2026-10-28-002",
-  "package_version": "v0.3.1",
   "scope": "source identity, DOCX container integrity, manifest hashes, and deterministic static markers only",
   "execution_boundary": "submitted AGI source was NOT imported or executed",
+  "package_version": "v0.3.1",
+  "script_root": ".",
   "source_file": "Epistemology_V9.0_Source.docx",
   "source_bytes": 22423,
   "source_sha256": "e3087ac7a077da0bd3ef924838f177496b3f2b44025b7da981dff481534ce316",
-  "isolated_extraction": true,
-  "legacy_v0_2_package_present": false,
-  "runs": [
-    {"run": 1, "exit_code": 0, "overall": "PASS", "result_sha256": "ba89c75eec4acc128449955369e43eb428f5e7ef16daec606fc061e9039b0886"},
-    {"run": 2, "exit_code": 0, "overall": "PASS", "result_sha256": "ba89c75eec4acc128449955369e43eb428f5e7ef16daec606fc061e9039b0886"}
+  "manifest_file": "VANGUARD_SCOS_PACKAGE_SHA256_MANIFEST_v0.2.txt",
+  "manifest_entries": 6,
+  "tests": [
+    {
+      "test": "T0-REQUIRED-PAYLOADS",
+      "status": "PASS",
+      "detail": "{\"missing\": [], \"required\": [\"Epistemology_V9.0_Source.docx\", \"Epistemology_V9_Static_Intake_Audit_v0.1.md\", \"VANGUARD_SCOS_Component_Intake_Register_v0.4.md\", \"VANGUARD_SCOS_Acceptance_Test_Execution_Ledger_v0.3.md\", \"VANGUARD_SCOS_Acceptance_Test_Plan_v0.1.md\", \"VANGUARD_SCOS_Transfer_Evidence_Ledger_v0.2.md\"]}"
+    },
+    {
+      "test": "T0-SOURCE-SHA256",
+      "status": "PASS",
+      "detail": "e3087ac7a077da0bd3ef924838f177496b3f2b44025b7da981dff481534ce316"
+    },
+    {
+      "test": "T0-DOCX-ZIP-AND-XML",
+      "status": "PASS",
+      "detail": "zip_test=None; paragraphs=608; document_xml_parsed=true"
+    },
+    {
+      "test": "T0-MANIFEST-HASHES",
+      "status": "PASS",
+      "detail": "{\"entries\": 6, \"errors\": []}"
+    },
+    {
+      "test": "T0-SMOKE-SOURCE-MARKERS",
+      "status": "PASS",
+      "detail": "{\"A2A_class_present\": true, \"DGM_external_dependency_reference_present\": true, \"QMARL_external_dependency_reference_present\": true, \"main_entrypoint_present\": true, \"synthetic_random_metric_present\": true}"
+    },
+    {
+      "test": "T0-NO-LEGACY-PACKAGE-DEPENDENCY",
+      "status": "PASS",
+      "detail": "{\"legacy_v0_2_present\": false, \"script_requires_legacy_v0_2\": false}"
+    }
   ],
-  "archive": {
-    "members": 9,
-    "zip_integrity": "PASS",
-    "sha256": "917583cd5b643107b7e14f2f39539f58637fa43bd89b7a5a81f4ace3fb5cd5a0",
-    "bytes": 37215
-  },
+  "overall": "PASS",
   "limitations": [
-    "T0 does not execute the submitted AGI source.",
-    "T0 does not establish runtime completeness, correctness, security, performance, quantum execution, or adoption.",
+    "T0 is not an AGI runtime test.",
+    "No performance, security, quantum execution, or adoption claim is made.",
     "T1-T12 remain NOT RUN."
-  ],
-  "overall": "PASS"
+  ]
 }
