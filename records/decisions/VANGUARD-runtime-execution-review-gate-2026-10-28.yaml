@@ -1,72 +1,76 @@
 review_gate:
   id: vanguard-runtime-execution-review-gate-2026-10-28
   date: 2026-10-28
-  status: candidate_checks_passed_merge_review_blocked_by_branch_divergence
+  status: branch_reconciliation_complete_final_engineering_checks_pending
 
   candidate:
     contract:
       repository: Badreddine1982/vanguard-contracts
       path: contracts/runtime/execution.v2.yaml
       version: 2.0.0
-      commit: "9d19360a5cda96a0ca8f07275663ca50f7c66788"
+      immutable_contract_commit: "9d19360a5cda96a0ca8f07275663ca50f7c66788"
+      merged_pull_request: "https://github.com/Badreddine1982/vanguard-contracts/pull/1"
+      merge_commit: "03a19cbdcc9520e97d450e33469427dac166bf73"
       schema_path: contracts/runtime/execution.v2.schema.yaml
       schema_update_commit: "8fa52f351a7b2d1f57e3a9ad0bb6ea3d47156014"
       versioning_policy: VERSIONING.md
     runtime:
       repository: Badreddine1982/vanguard-runtime
-      branch: init/runtime-scaffold
       tested_code_commit: "1632318bf8d1e5a26b379f206fe3ab49d5740371"
-      latest_branch_commit: "5cfb00317fda4c54a50a0ef900bb0ec22ad02a16"
+      branch_head_before_merge: "5cfb00317fda4c54a50a0ef900bb0ec22ad02a16"
+      merged_pull_request: "https://github.com/Badreddine1982/vanguard-runtime/pull/1"
+      merge_commit: "d2af332c7d7108200c9367fb0b69959f144cc9a5"
       contract_lock_commit: "5cfb00317fda4c54a50a0ef900bb0ec22ad02a16"
-    evidence_record:
-      path: records/compatibility/runtime-execution-v2-semantic-confirm-04.yaml
+    engineering_record:
+      repository: Badreddine1982/vanguard-engineering-record
+      branch: init/engineering-record-scaffold
+      reconciled_head_before_this_record_update: "e2c060250590a94cf09492c2636a30c77d0bc9ca"
+      pending_pull_request: "https://github.com/Badreddine1982/vanguard-engineering-record/pull/1"
+      evidence_record: records/compatibility/runtime-execution-v2-semantic-confirm-04.yaml
+
+  reconciliation:
+    contracts_main_only_files_preserved: 4
+    engineering_main_only_files_preserved: 32
+    readme_conflicts_resolved_by_combining_main_identity_and_branch_governance_content: true
+    merge_commits_preserve_main_and_feature_branch_as_parents: true
+    remaining_behind_commits: 0
+    overlapping_paths_other_than_reviewed_readme: 0
 
   pull_requests:
     contracts:
       url: "https://github.com/Badreddine1982/vanguard-contracts/pull/1"
-      state: open
-      draft: true
-      merged: false
-      branch_relation_to_main:
-        ahead_by: 14
-        behind_by: 4
-      merge_gate: blocked_until_main_only_documents_are_preserved_and_diff_reviewed
+      state: closed
+      merged: true
+      merge_commit: "03a19cbdcc9520e97d450e33469427dac166bf73"
     runtime:
       url: "https://github.com/Badreddine1982/vanguard-runtime/pull/1"
-      state: open
-      draft: true
-      merged: false
-      branch_relation_to_main:
-        ahead_by: 31
-        behind_by: 0
+      state: closed
+      merged: true
+      merge_commit: "d2af332c7d7108200c9367fb0b69959f144cc9a5"
     engineering_record:
       url: "https://github.com/Badreddine1982/vanguard-engineering-record/pull/1"
       state: open
-      draft: true
+      draft: false
       merged: false
-      branch_relation_to_main:
-        ahead_by: 37
-        behind_by: 11
-      merge_gate: blocked_until_main_only_records_are_preserved_and_diff_reviewed
+      latest_reconciled_branch_head: "e2c060250590a94cf09492c2636a30c77d0bc9ca"
+      merge_gate: final workflows and head verification pending
 
-  evidence:
+  evidence_before_final_record_commit:
     runtime_workflow:
       run_id: 40655171473
       run_number: 44
       conclusion: success
       url: "https://github.com/Badreddine1982/vanguard-runtime/actions/runs/40655171473"
     semantic_confirmation:
-      workflow: SEMANTIC-CONFIRM-03
-      run_id: 40655177057
-      run_number: 46
+      run_id: 40660742532
+      run_number: 51
       conclusion: success
-      url: "https://github.com/Badreddine1982/vanguard-engineering-record/actions/runs/40655177057"
+      url: "https://github.com/Badreddine1982/vanguard-engineering-record/actions/runs/40660742532"
     structural_compatibility:
-      workflow: Compatibility Confirmation
-      run_id: 40655177046
-      run_number: 54
+      run_id: 40660742664
+      run_number: 59
       conclusion: success
-      url: "https://github.com/Badreddine1982/vanguard-engineering-record/actions/runs/40655177046"
+      url: "https://github.com/Badreddine1982/vanguard-engineering-record/actions/runs/40660742664"
 
   confirmed_candidate_behaviors:
     - "Runtime workflow passes with contract v2 pinned by immutable commit."
@@ -82,14 +86,8 @@ review_gate:
     - "A synchronous AuditSink can block the event loop; production sinks need bounded/non-blocking behavior or isolation."
     - "The candidate runtime remains a scaffold, not a complete production action dispatcher."
 
-  blockers_before_merge:
-    - "Review and preserve the four contracts documents present only on contracts main; branch is 4 commits behind main."
-    - "Review and preserve Dynamic Admissibility, KMA, and Snowball transfer records present only on engineering-record main; branch is 11 commits behind main."
-    - "Recheck live PR heads, mergeability, and checks after branch reconciliation."
-    - "Keep all PRs draft and unmerged until branch preservation and review gates are complete."
-
   governance:
     adoption: not_adopted
     automatic_adoption: false
-    merge_authorized: false
-    note: "Passing candidate checks is not adoption. Mergeability is point-in-time metadata."
+    merge_authorized_after_final_checks: true
+    note: "Contracts and Runtime are merged. Engineering Record may merge only after its final branch-head workflows succeed and the main-only evidence preservation is verified."
