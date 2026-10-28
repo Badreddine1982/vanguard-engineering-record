@@ -84,6 +84,8 @@ def main():
         'record_id': 'VSC-T0-2026-10-28-002',
         'scope': 'source identity, DOCX container integrity, manifest hashes, and deterministic static markers only',
         'execution_boundary': 'submitted AGI source was NOT imported or executed',
+        'package_version': 'v0.3.1',
+        'script_root': '.',
         'source_file': SOURCE.name,
         'source_bytes': SOURCE.stat().st_size if SOURCE.exists() else None,
         'source_sha256': source_hash,
