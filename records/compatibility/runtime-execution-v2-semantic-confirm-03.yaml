@@ -1,7 +1,7 @@
 semantic_confirmation:
   id: runtime.execution.v2.semantic-confirm-03
   schema: "v0.1"
-  status: candidate_checks_passed_review_pending
+  status: confirmed_within_declared_test_scope
 
   source:
     component: vanguard-contracts
@@ -17,13 +17,14 @@ semantic_confirmation:
     repository: Badreddine1982/vanguard-runtime
     branch: init/runtime-scaffold
     tested_runtime_commit: 1632318bf8d1e5a26b379f206fe3ab49d5740371
+    latest_runtime_branch_commit_at_recording: a8fbb28a1107304c17c34975b14f8983359e1812
 
   tests:
     runtime_workflow:
-      run_id: 40654822154
-      run_number: 37
+      run_id: 40654863757
+      run_number: 42
       conclusion: success
-      url: "https://github.com/Badreddine1982/vanguard-runtime/actions/runs/40654822154"
+      url: "https://github.com/Badreddine1982/vanguard-runtime/actions/runs/40654863757"
       scope:
         - contract lock verification
         - lifecycle verification and fixture
@@ -32,18 +33,17 @@ semantic_confirmation:
 
     semantic_confirmation:
       workflow: SEMANTIC-CONFIRM-03
-      status: pending_new_workflow_run
-      previous_script_run:
-        run_id: 40654903824
-        run_number: 35
-        conclusion: success
-        note: "The updated semantic script passed under the old workflow display name; a new run is required after renaming."
+      run_id: 40654972047
+      run_number: 39
+      conclusion: success
+      url: "https://github.com/Badreddine1982/vanguard-engineering-record/actions/runs/40654972047"
 
     structural_compatibility:
       workflow: Compatibility Confirmation
-      run_id: 40654903986
-      run_number: 43
+      run_id: 40654972262
+      run_number: 47
       conclusion: success
+      url: "https://github.com/Badreddine1982/vanguard-engineering-record/actions/runs/40654972262"
       scope: "Structural assertions against the exact v2 contract and runtime commits."
 
   checks:
