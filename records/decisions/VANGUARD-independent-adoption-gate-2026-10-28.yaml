@@ -1,0 +1,90 @@
+adoption_gate:
+  id: VANGUARD-independent-adoption-gate-2026-10-28
+  date: 2026-10-28
+  status: OPEN_NOT_ADOPTED
+  independence:
+    separate_from_merge_gate: true
+    separate_from_transfer_gate: true
+    automatic_adoption: false
+    decision_authority: explicit_review_after_evidence
+    rule: "A merged PR or passing CI closes only its scoped merge/check gate; it never adopts a component by implication."
+
+  workflow_order:
+    - reconcile_candidate_with_current_main
+    - inventory_and_protect_main_only_and_governance_files
+    - run_scoped_structural_semantic_and_behavioral_tests
+    - merge_only_after_all_required_merge_checks_pass
+    - conduct_independent_adoption_review_after_merge
+  merge_order_for_multi_repository_changes:
+    - contracts
+    - runtime
+    - engineering_record
+  ordering_note: "This order applies to the already-completed Runtime/Contracts reconciliation set. It must not be replayed as a new merge; any future changes require fresh PRs and fresh checks."
+
+  file_protection:
+    protected_library_governance_law: excluded_from_transfer_and_adoption_changes
+    preserve_main_only_files: required
+    silent_overwrite_or_deletion: prohibited
+    required_evidence:
+      - baseline_main_commit
+      - candidate_head_commit
+      - changed_path_inventory
+      - main_only_path_reconciliation
+      - post_merge_readback
+    current_gate_record_change:
+      repository: Badreddine1982/vanguard-engineering-record
+      base_ref: main
+      branch_created_from: main
+      intended_path: records/decisions/VANGUARD-independent-adoption-gate-2026-10-28.yaml
+      scope: "This governance record only; no runtime, contract, SCOS source, or Library law files are modified."
+
+  tracks:
+    runtime_execution_v2:
+      repository: Badreddine1982/vanguard-runtime
+      contract_repository: Badreddine1982/vanguard-contracts
+      current_state: MERGE_GATE_CLOSED_ADOPTION_OPEN
+      candidate_version: runtime.execution-v2.0.0
+      adoption_state: NOT_ADOPTED
+      mandatory_evidence_before_adoption:
+        - production_executor_adapter_contract_and_implementation
+        - side_effect_semantics_for_success_failure_timeout_and_partial_completion
+        - cancellation_and_uncertain_completion_tests_against_real_adapter_boundary
+        - audit_sink_bounded_nonblocking_or_isolated_behavior
+        - post_merge_regression_results_on_exact_candidate_commits
+      known_blockers:
+        - "Timeout is cooperative cancellation, not hard preemption."
+        - "Production executor side effects and cancellation guarantees are adapter-specific and unverified."
+        - "Synchronous AuditSink may block the event loop unless bounded or isolated."
+        - "Current runtime remains a scaffold, not a complete production dispatcher."
+
+    vanguard_scos:
+      repository: Badreddine1982/vanguard-engineering-record
+      evidence_baseline: SCOS-v0.3.1
+      current_state: TRANSFER_EVIDENCE_RECORDED_T0_LIMITED_PASS_T1_T12_OPEN
+      adoption_state: NOT_ADOPTED
+      package_sha256: 917583cd5b643107b7e14f2f39539f58637fa43bd89b7a5a81f4ace3fb5cd5a0
+      mandatory_evidence_before_adoption:
+        - "T1-T12 each executed only within its declared scope"
+        - "Inputs, environment, exit status, logs, and result hashes retained"
+        - "Security-sensitive or side-effecting adapters mocked or isolated until explicitly approved"
+        - "Independent review of results and unresolved limitations"
+        - "Package publication/read-back separately verified if claimed"
+      known_blockers:
+        - "T0 covers source identity, DOCX container/XML integrity, manifest hashes, and static markers only."
+        - "The submitted source was not imported or executed."
+        - "T1-T12 remain NOT RUN."
+        - "The ZIP binary is documented as a Library artifact; GitHub evidence records do not prove binary publication."
+
+  independent_review_checklist:
+    - "Verify candidate and dependency commits are immutable and identified."
+    - "Confirm no protected governance file was modified."
+    - "Confirm reconciliation inventory has zero unexplained missing or overwritten paths."
+    - "Review successful required checks for the exact candidate commits, not merely a similar branch."
+    - "Review failures, UNKNOWN states, and test limitations as first-class evidence."
+    - "Record an explicit decision per track: ADOPTED, REJECTED, or DEFERRED."
+    - "If any mandatory evidence is missing, decision remains DEFERRED_NOT_ADOPTED."
+
+  current_decision:
+    runtime_execution_v2: DEFERRED_NOT_ADOPTED
+    vanguard_scos: DEFERRED_NOT_ADOPTED
+    rationale: "The current evidence supports the recorded merge/transfer states but does not satisfy the independent production/adoption criteria above."
