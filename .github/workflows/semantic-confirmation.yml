@@ -1,4 +1,4 @@
-name: SEMANTIC-CONFIRM-02
+name: SEMANTIC-CONFIRM-03
 
 on:
   pull_request:
@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   semantic-confirmation:
-    name: semantic runtime contract confirmation
+    name: semantic runtime contract v2 confirmation
     runs-on: ubuntu-latest
     steps:
       - name: Checkout engineering record
@@ -23,5 +23,5 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Execute SEMANTIC-CONFIRM-02
+      - name: Execute SEMANTIC-CONFIRM-03
         run: python scripts/semantic_confirm_runtime_execution.py
