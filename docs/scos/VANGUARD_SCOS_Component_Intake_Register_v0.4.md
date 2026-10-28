@@ -20,7 +20,7 @@
 | VSC-C10 | Quorum | AGI ARC draft | Independent evidence aggregation | Random voting is not valid evidence | Reject current mechanism; retain idea | Define independence/fault model |
 | VSC-C11 | RSI-Isolated E0 | `RSI_Isolated_Project_E0.md` | Independent RSI research | Useful performance gate failed | `NOT ADOPTED`; retain negative evidence | New experiment only with justified change |
 | VSC-C12 | Damage-resilient nucleus | `damage_resilient_nucleus.py` | Fault detection/recovery candidate | Full behavior/tests not assessed here | Separate experiment | Inspect source; define fault model/tests |
-| VSC-C13 | Epistemology V9.0 / AdvancedAGI | `/VANGUARD-SCOS-INTAKE/Epistemology_V9.0_Source.docx`; audit `LIB-AUDIT-VSC-V9-001` | Possible framework/candidate interfaces | Source SHA-256 recorded; T0 isolated reproduction passed in limited scope; submitted program not executed | Preserve source; no wholesale merge; `NOT VERIFIED / NOT ADOPTED` | Resolve dependencies; define runnable isolated candidates and runtime tests |
+| VSC-C13 | Epistemology V9.0 / AdvancedAGI | `الإبستمولوجية ,V 9.0.docx`; audit `LIB-AUDIT-VSC-V9-001`; T0 `VSC-T0-2026-10-19-001` | Possible framework/candidate interfaces | SHA-256 fingerprinted; DOCX container/XML integrity and deterministic static-marker checks passed; submitted program not executed | Source identity captured; preserve original; no wholesale merge; `NOT VERIFIED / NOT ADOPTED` | Resolve dependencies; define a runnable isolated candidate and runtime test contract |
 
 ## Status vocabulary
 - `LOCKED`: intake identity/source captured; no adoption.
@@ -34,7 +34,18 @@
 ## No-assumption rule
 Library storage does not prove implementation completeness, test success, integration, security, or adoption.
 
+## Revision 0.2 change log
+- Added static audit reference for Epistemology V9.0 / AdvancedAGI.
+- Updated VSC-C13 to reflect static review completed but execution not performed.
+- No component promoted to `VERIFIED`, `CONFIRMED`, or `ADOPTED`.
+
+## Revision 0.3 change log — 2026-10-19
+- Closed source identity capture for VSC-C13 after recording SHA-256: `e3087ac7a077da0bd3ef924838f177496b3f2b44025b7da981dff481534ce316`.
+- T0 static identity/integrity checks passed; a small deterministic source-marker smoke check was repeated with identical result artifact hash.
+- Intake closure does not close verification, confirmation, or adoption. No component promoted to `VERIFIED`, `CONFIRMED`, or `ADOPTED`.
+
 ## Revision 0.4 change log
-- Recorded the v0.3 T0 dependency defect and corrected it in package v0.3.1.
-- T0 passed twice from a clean extraction without v0.2; result hashes matched.
-- T1–T12 remain `NOT RUN`; no component promoted to `VERIFIED`, `CONFIRMED`, or `ADOPTED`.
+- Recorded the reproducible T0 defect: v0.3's script referenced `VANGUARD_SCOS_Intake_Completion_Package_v0.2.zip`, which is not included in the v0.3 archive.
+- Updated the package to v0.3.1 with a self-contained T0 script rooted at the script location and a manifest-driven payload check.
+- T0 was rerun twice from a clean extraction without v0.2; see `VSC_T0_Smoke_Test_Results_v0.2.json` and the transfer evidence ledger.
+- T1–T12 remain `NOT RUN`; no component is promoted to `VERIFIED`, `CONFIRMED`, or `ADOPTED` by this correction.
