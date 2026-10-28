@@ -1,0 +1,65 @@
+semantic_confirmation:
+  id: runtime.execution.v2.semantic-confirm-04
+  schema: "v0.1"
+  status: confirmed_within_declared_test_scope
+
+  source:
+    component: vanguard-contracts
+    repository: Badreddine1982/vanguard-contracts
+    contract:
+      id: runtime.execution
+      version: 2.0.0
+      path: contracts/runtime/execution.v2.yaml
+      commit: 9d19360a5cda96a0ca8f07275663ca50f7c66788
+      schema_path: contracts/runtime/execution.v2.schema.yaml
+      schema_update_commit: 8fa52f351a7b2d1f57e3a9ad0bb6ea3d47156014
+
+  target:
+    component: vanguard-runtime
+    repository: Badreddine1982/vanguard-runtime
+    branch: init/runtime-scaffold
+    tested_code_commit: 1632318bf8d1e5a26b379f206fe3ab49d5740371
+    latest_branch_commit_at_recording: 5cfb00317fda4c54a50a0ef900bb0ec22ad02a16
+    contract_lock_commit: 5cfb00317fda4c54a50a0ef900bb0ec22ad02a16
+
+  tests:
+    runtime_workflow:
+      run_id: 40655171473
+      run_number: 44
+      conclusion: success
+      url: "https://github.com/Badreddine1982/vanguard-runtime/actions/runs/40655171473"
+
+    semantic_confirmation:
+      workflow: SEMANTIC-CONFIRM-03
+      run_id: 40655177057
+      run_number: 46
+      conclusion: success
+      url: "https://github.com/Badreddine1982/vanguard-engineering-record/actions/runs/40655177057"
+
+    structural_compatibility:
+      workflow: Compatibility Confirmation
+      run_id: 40655177046
+      run_number: 54
+      conclusion: success
+      url: "https://github.com/Badreddine1982/vanguard-engineering-record/actions/runs/40655177046"
+
+  checks:
+    versioned_contract_and_schema_alignment: pass
+    runtime_lock_pins_exact_contract_commit: pass
+    valid_request_and_audit_event: pass
+    deterministic_validation_errors_and_audit_events: pass
+    cooperative_long_running_action_cancelled_at_deadline: pass
+    cancellation_suppression_reported_as_EXECUTION_STATE_UNKNOWN: pass
+    audit_sink_failure_fails_closed: pass
+    production_side_effect_containment: not_confirmed
+    hard_preemption_of_non_cooperative_executor: not_guaranteed
+
+  scope:
+    - "Runtime tests and semantic checks pass for the tested runtime code commit."
+    - "Structural compatibility check passes against the aligned v2 contract commit."
+    - "This is not proof of production-grade isolation, durable audit storage, or hard termination of external work."
+
+  governance:
+    adoption: not_adopted
+    automatic_adoption: false
+    merge_authorized: false
