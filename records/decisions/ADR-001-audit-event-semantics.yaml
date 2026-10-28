@@ -1,6 +1,6 @@
 decision:
   id: ADR-001-audit-event-semantics
-  version: 0.4
+  version: 0.5
   status: proposed
   scope:
     contract: runtime.execution@1.0.0
@@ -63,7 +63,8 @@ decision:
   remaining_validation:
     - "Perform an independent candidate structural compatibility check against exact candidate commits."
     - "Confirm contract/schema/runtime versioning consistency."
-    - "Resolve contracts PR divergence and investigate mergeability without discarding main-branch commits."
+    - "Contracts PR #1 is still mergeable=false; its branch is 11 commits ahead and 4 commits behind main. Four additional contract documents exist on main and must be preserved."
+    - "Resolve contracts PR divergence and determine the actual mergeability cause before any merge."
     - "Review actual timeout enforcement as a separate requirement."
     - "Keep all three PRs unmerged until the review gate is satisfied."
 
