@@ -1,0 +1,60 @@
+review_gate:
+  id: vanguard-runtime-execution-review-gate-2026-10-28
+  date: 2026-10-28
+  status: candidate_checks_passed_review_pending
+
+  pull_requests:
+    contracts:
+      url: "https://github.com/Badreddine1982/vanguard-contracts/pull/1"
+      state: open
+      draft: true
+      merged: false
+      mergeable_at_check: true
+      head_commit: "1237f443606d2b06c10778fbe1293257d048874e"
+      branch_relation_to_main:
+        ahead_by: 11
+        behind_by: 4
+      note: "Four contract documents exist on main and must remain preserved through any merge."
+    runtime:
+      url: "https://github.com/Badreddine1982/vanguard-runtime/pull/1"
+      state: open
+      draft: true
+      merged: false
+      mergeable_at_check: true
+      head_commit: "18439a7d027be51f63bd96094af0173fdba1ec7c"
+    engineering_record:
+      url: "https://github.com/Badreddine1982/vanguard-engineering-record/pull/1"
+      state: open
+      draft: true
+      merged: false
+      mergeable_at_check: true
+      head_commit: "1e86d3d7dd3c4d4f7efca8e3e82425652f9c96ee"
+      branch_relation_to_main:
+        ahead_by: 29
+        behind_by: 11
+      note: "Main contains Dynamic Admissibility, KMA, and Snowball transfer records; preserve them."
+
+  candidate_evidence:
+    runtime_workflow:
+      run_id: 40653423350
+      conclusion: success
+    semantic_confirmation:
+      run_id: 40653619018
+      conclusion: success
+    structural_compatibility:
+      run_id: 40653619016
+      conclusion: success
+      scope: "structural assertions only"
+
+  blockers_before_merge:
+    - "Review the proposed audit sink API and finalize version policy before adoption."
+    - "Actual timeout enforcement is not tested; current tests validate non-positive timeout rejection only."
+    - "Verify contract, schema, runtime API, and version naming are consistent."
+    - "Review the complete diffs in all three PRs and confirm transferred records are preserved."
+    - "Keep all PRs in draft until review gates are explicitly closed."
+
+  governance:
+    adoption: not_adopted
+    automatic_adoption: false
+    merge_authorized: false
+    snapshot_note: "Mergeability is a point-in-time GitHub field; recheck immediately before any merge."
