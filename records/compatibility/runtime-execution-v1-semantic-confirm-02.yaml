@@ -21,16 +21,29 @@ semantic_confirmation:
   test:
     id: SEMANTIC-CONFIRM-02
     workflow:
-      name_at_execution: "SEMANTIC-CONFIRM-01"
-      run_id: 40653355675
-      run_number: 14
+      name: "SEMANTIC-CONFIRM-02"
+      run_id: 40653461647
+      run_number: 16
       conclusion: success
-      url: "https://github.com/Badreddine1982/vanguard-engineering-record/actions/runs/40653355675"
+      url: "https://github.com/Badreddine1982/vanguard-engineering-record/actions/runs/40653461647"
     checks:
       valid_request_and_audit_event: pass
       deterministic_validation_errors_and_audit_events: pass
       audit_sink_failure_fails_closed: pass
       timeout_enforcement: not_tested
+
+  runtime_workflow:
+    name: "Runtime Contract Test"
+    run_id: 40653423350
+    run_number: 34
+    conclusion: success
+    url: "https://github.com/Badreddine1982/vanguard-runtime/actions/runs/40653423350"
+    checks:
+      lifecycle_definition: pass
+      lifecycle_transition_fixture: pass
+      pinned_contract_verification: pass
+      runtime_unit_tests: pass
+      explicit_adoption_gate: pass
 
   scope:
     confirmed:
@@ -38,6 +51,7 @@ semantic_confirmation:
       - "Accepted events produce a non-empty evidence reference in ExecutionResult."
       - "Validation failures are represented in audit events."
       - "Audit sink failure returns AUDIT_SINK_FAILURE and a failed result."
+      - "The complete runtime workflow passed on the PR merge ref."
     not_confirmed:
       - "Actual timeout enforcement for long-running actions."
       - "Durability guarantees of any production AuditSink implementation."
@@ -50,6 +64,7 @@ semantic_confirmation:
     confirmation_scope: "semantic behavior of the pinned candidate runtime against the candidate audit sink contract"
 
   next:
-    - "Fix and rerun the runtime lifecycle gate after replacing the hard-coded historical contract SHA."
-    - "Run the complete runtime workflow to completion."
-    - "Keep the contracts PR unmerged until divergence and mergeability are resolved."
+    - "Confirm contract/schema/runtime versioning consistency before review."
+    - "Resolve contracts PR divergence and investigate mergeability without discarding main-branch commits."
+    - "Review actual timeout enforcement as a separate requirement."
+    - "Keep all three PRs unmerged until the review gate is satisfied."
