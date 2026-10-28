@@ -1,0 +1,41 @@
+validation_update:
+  id: ADR-001-audit-event-semantics-validation-update
+  date: 2026-10-28
+  relates_to: records/decisions/ADR-001-audit-event-semantics.yaml
+  status: evidence_update
+
+  candidate:
+    contract_commit: "1237f443606d2b06c10778fbe1293257d048874e"
+    schema_commit: "56ff1979f32845f1c90e0b439d60744f8afef322"
+    runtime_commit: "fa4365571612ce9e583af27174ca3322aad0b740"
+
+  results:
+    semantic_confirmation:
+      run_id: 40653619018
+      conclusion: success
+      url: "https://github.com/Badreddine1982/vanguard-engineering-record/actions/runs/40653619018"
+    structural_compatibility:
+      run_id: 40653619016
+      conclusion: success
+      scope: "structural assertions only"
+      url: "https://github.com/Badreddine1982/vanguard-engineering-record/actions/runs/40653619016"
+    runtime_workflow:
+      run_id: 40653423350
+      conclusion: success
+      url: "https://github.com/Badreddine1982/vanguard-runtime/actions/runs/40653423350"
+
+  conclusion:
+    candidate_semantic_checks: passed
+    candidate_structural_checks: passed
+    runtime_workflow: passed
+    timeout_enforcement: not_tested
+    production_sink_durability: not_tested
+    adoption: not_adopted
+    merge_authorized: false
+
+  remaining_gates:
+    - "Finalize versioning policy for the candidate API before adoption."
+    - "Review timeout enforcement separately."
+    - "Resolve contracts PR #1 mergeability; branch is 11 commits ahead and 4 behind main."
+    - "Preserve the four additional contract documents on main."
+    - "Do not merge any PR until all review gates are satisfied."
