@@ -1,7 +1,22 @@
 review_gate:
   id: vanguard-runtime-execution-review-gate-2026-10-28
   date: 2026-10-28
-  status: candidate_checks_passed_review_pending
+  status: v2_candidate_checks_passed_semantic_run_pending_final_review
+
+  candidate:
+    contract:
+      repository: Badreddine1982/vanguard-contracts
+      path: contracts/runtime/execution.v2.yaml
+      version: 2.0.0
+      commit: "108b5b2cf52932d5807144b4b6ba00f4065e2498"
+      schema_path: contracts/runtime/execution.v2.schema.yaml
+      versioning_policy: VERSIONING.md
+    runtime:
+      repository: Badreddine1982/vanguard-runtime
+      branch: init/runtime-scaffold
+      tested_code_commit: "1632318bf8d1e5a26b379f206fe3ab49d5740371"
+      latest_branch_commit: "a8fbb28a1107304c17c34975b14f8983359e1812"
+      contract_lock_commit: "814974381967f3d9895e5474a052e253c901bb02"
 
   pull_requests:
     contracts:
@@ -9,52 +24,68 @@ review_gate:
       state: open
       draft: true
       merged: false
-      mergeable_at_check: true
-      head_commit: "1237f443606d2b06c10778fbe1293257d048874e"
-      branch_relation_to_main:
-        ahead_by: 11
+      latest_contract_branch_relation_to_main:
+        ahead_by: 14
         behind_by: 4
-      note: "Four contract documents exist on main and must remain preserved through any merge."
+      merge_gate: blocked_until_main_only_documents_are_preserved_and_diff_reviewed
     runtime:
       url: "https://github.com/Badreddine1982/vanguard-runtime/pull/1"
       state: open
       draft: true
       merged: false
-      mergeable_at_check: true
-      head_commit: "18439a7d027be51f63bd96094af0173fdba1ec7c"
+      latest_branch_relation_to_main:
+        ahead_by: 31
+        behind_by: 0
     engineering_record:
       url: "https://github.com/Badreddine1982/vanguard-engineering-record/pull/1"
       state: open
       draft: true
       merged: false
-      mergeable_at_check: true
-      head_commit: "1e86d3d7dd3c4d4f7efca8e3e82425652f9c96ee"
-      branch_relation_to_main:
-        ahead_by: 29
+      latest_branch_relation_to_main:
+        ahead_by: 32
         behind_by: 11
-      note: "Main contains Dynamic Admissibility, KMA, and Snowball transfer records; preserve them."
+      merge_gate: blocked_until_main_only_records_are_preserved_and_diff_reviewed
 
-  candidate_evidence:
+  evidence:
     runtime_workflow:
-      run_id: 40653423350
+      run_id: 40654863757
+      run_number: 42
       conclusion: success
-    semantic_confirmation:
-      run_id: 40653619018
-      conclusion: success
+      url: "https://github.com/Badreddine1982/vanguard-runtime/actions/runs/40654863757"
     structural_compatibility:
-      run_id: 40653619016
+      run_id: 40654972262
+      run_number: 47
       conclusion: success
-      scope: "structural assertions only"
+      url: "https://github.com/Badreddine1982/vanguard-engineering-record/actions/runs/40654972262"
+      scope: "Structural assertions only; not exhaustive behavioral proof."
+    semantic_confirmation:
+      workflow: SEMANTIC-CONFIRM-03
+      run_id: 40654972047
+      run_number: 39
+      status: in_progress
+      url: "https://github.com/Badreddine1982/vanguard-engineering-record/actions/runs/40654972047"
+
+  confirmed_candidate_behaviors:
+    - "Positive timeout budget is enforced for cooperative async execution."
+    - "A long-running cooperative action is cancelled at the deadline."
+    - "Cancellation suppression maps to EXECUTION_STATE_UNKNOWN rather than claiming successful cancellation."
+    - "Audit events are emitted for validation, timeout, uncertain completion, and audit-sink failure paths."
+    - "Contract lock is pinned to a full immutable v2 contract commit."
+  limitations:
+    - "This is cooperative asyncio cancellation, not hard preemption of arbitrary external processes."
+    - "Production executor side effects and cancellation guarantees remain adapter-specific and unverified."
+    - "A synchronous AuditSink can block the event loop; production sinks must have bounded/non-blocking behavior or an isolated adapter."
+    - "The candidate runtime remains a scaffold, not a complete production action dispatcher."
 
   blockers_before_merge:
-    - "Review the proposed audit sink API and finalize version policy before adoption."
-    - "Actual timeout enforcement is not tested; current tests validate non-positive timeout rejection only."
-    - "Verify contract, schema, runtime API, and version naming are consistent."
-    - "Review the complete diffs in all three PRs and confirm transferred records are preserved."
-    - "Keep all PRs in draft until review gates are explicitly closed."
+    - "Wait for SEMANTIC-CONFIRM-03 final conclusion and record it."
+    - "Review the complete PR diffs and preserve the four contracts documents present only on contracts main."
+    - "Review and preserve Dynamic Admissibility, KMA, and Snowball transfer records present only on engineering-record main."
+    - "Recheck live PR heads, mergeability, and checks after all final commits."
+    - "Keep all PRs draft and unmerged until the remaining gates are explicitly closed."
 
   governance:
     adoption: not_adopted
     automatic_adoption: false
     merge_authorized: false
-    snapshot_note: "Mergeability is a point-in-time GitHub field; recheck immediately before any merge."
+    note: "Successful candidate checks do not imply adoption. Mergeability is a point-in-time field."
