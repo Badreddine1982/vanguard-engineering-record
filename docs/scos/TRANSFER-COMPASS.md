@@ -27,6 +27,10 @@ v0.3.1 replaces the legacy-package check with required-payload and SHA-256 manif
 - Both runs produced result JSON SHA-256: `ba89c75eec4acc128449955369e43eb428f5e7ef16daec606fc061e9039b0886`.
 - T0 scope remains limited to source identity, DOCX container/XML integrity, manifest hashes, and deterministic static markers. The submitted AGI source was not imported or executed.
 
+## GitHub artifact boundary
+
+This PR transfers the auditable text records, manifest, T0 result record, and T0 script into GitHub. The binary ZIP v0.3.1 is currently stored in the Library and has been read back byte-for-byte; it is **not included as a binary file in this PR**. Therefore this PR does not claim that the ZIP itself has been published as a GitHub repository/release asset.
+
 ## File-level status
 
 | Artifact | State |
