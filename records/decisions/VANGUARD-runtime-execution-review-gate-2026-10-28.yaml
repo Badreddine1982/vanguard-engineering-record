@@ -1,7 +1,7 @@
 review_gate:
   id: vanguard-runtime-execution-review-gate-2026-10-28
   date: 2026-10-28
-  status: v2_candidate_checks_passed_semantic_run_pending_final_review
+  status: candidate_checks_passed_merge_review_blocked_by_branch_divergence
 
   candidate:
     contract:
@@ -24,7 +24,7 @@ review_gate:
       state: open
       draft: true
       merged: false
-      latest_contract_branch_relation_to_main:
+      branch_relation_to_main:
         ahead_by: 14
         behind_by: 4
       merge_gate: blocked_until_main_only_documents_are_preserved_and_diff_reviewed
@@ -33,7 +33,7 @@ review_gate:
       state: open
       draft: true
       merged: false
-      latest_branch_relation_to_main:
+      branch_relation_to_main:
         ahead_by: 31
         behind_by: 0
     engineering_record:
@@ -41,8 +41,8 @@ review_gate:
       state: open
       draft: true
       merged: false
-      latest_branch_relation_to_main:
-        ahead_by: 32
+      branch_relation_to_main:
+        ahead_by: 33
         behind_by: 11
       merge_gate: blocked_until_main_only_records_are_preserved_and_diff_reviewed
 
@@ -52,40 +52,39 @@ review_gate:
       run_number: 42
       conclusion: success
       url: "https://github.com/Badreddine1982/vanguard-runtime/actions/runs/40654863757"
+    semantic_confirmation:
+      run_id: 40654972047
+      run_number: 39
+      conclusion: success
+      url: "https://github.com/Badreddine1982/vanguard-engineering-record/actions/runs/40654972047"
     structural_compatibility:
       run_id: 40654972262
       run_number: 47
       conclusion: success
       url: "https://github.com/Badreddine1982/vanguard-engineering-record/actions/runs/40654972262"
-      scope: "Structural assertions only; not exhaustive behavioral proof."
-    semantic_confirmation:
-      workflow: SEMANTIC-CONFIRM-03
-      run_id: 40654972047
-      run_number: 39
-      status: in_progress
-      url: "https://github.com/Badreddine1982/vanguard-engineering-record/actions/runs/40654972047"
 
   confirmed_candidate_behaviors:
+    - "The runtime workflow passes with contract v2 pinned by immutable commit."
     - "Positive timeout budget is enforced for cooperative async execution."
     - "A long-running cooperative action is cancelled at the deadline."
     - "Cancellation suppression maps to EXECUTION_STATE_UNKNOWN rather than claiming successful cancellation."
     - "Audit events are emitted for validation, timeout, uncertain completion, and audit-sink failure paths."
-    - "Contract lock is pinned to a full immutable v2 contract commit."
+    - "Structural compatibility assertions pass for the candidate contract/runtime pair."
+
   limitations:
-    - "This is cooperative asyncio cancellation, not hard preemption of arbitrary external processes."
+    - "Timeout is cooperative asyncio cancellation, not hard preemption of arbitrary external processes."
     - "Production executor side effects and cancellation guarantees remain adapter-specific and unverified."
-    - "A synchronous AuditSink can block the event loop; production sinks must have bounded/non-blocking behavior or an isolated adapter."
+    - "A synchronous AuditSink can block the event loop; production sinks need bounded/non-blocking behavior or isolation."
     - "The candidate runtime remains a scaffold, not a complete production action dispatcher."
 
   blockers_before_merge:
-    - "Wait for SEMANTIC-CONFIRM-03 final conclusion and record it."
-    - "Review the complete PR diffs and preserve the four contracts documents present only on contracts main."
-    - "Review and preserve Dynamic Admissibility, KMA, and Snowball transfer records present only on engineering-record main."
-    - "Recheck live PR heads, mergeability, and checks after all final commits."
-    - "Keep all PRs draft and unmerged until the remaining gates are explicitly closed."
+    - "Review and preserve the four contracts documents present only on contracts main; contract branch is 4 commits behind main."
+    - "Review and preserve Dynamic Admissibility, KMA, and Snowball transfer records present only on engineering-record main; engineering branch is 11 commits behind main."
+    - "Recheck live PR heads, mergeability, and checks after branch reconciliation."
+    - "Keep all PRs draft and unmerged until branch preservation and review gates are complete."
 
   governance:
     adoption: not_adopted
     automatic_adoption: false
     merge_authorized: false
-    note: "Successful candidate checks do not imply adoption. Mergeability is a point-in-time field."
+    note: "Passing candidate checks is not adoption. Mergeability is point-in-time metadata."
