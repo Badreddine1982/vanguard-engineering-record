@@ -1,6 +1,6 @@
 decision:
   id: ADR-001-audit-event-semantics
-  version: 0.2
+  version: 0.3
   status: proposed
   scope:
     contract: runtime.execution@1.0.0
@@ -39,17 +39,21 @@ decision:
     - "The sink must return a non-empty stable reference for accepted events."
     - "A sink failure causes execution to fail closed."
     - "Timeout behavior is not proven by checking only that timeout_ms is positive."
+    - "Candidate contract API changes are treated as breaking until version policy is finalized before adoption."
   implementation_candidates:
     contract_branch: "init/contracts-scaffold"
-    contract_commit: "f351c6ab6890d536b7f549b92c72b0b5587f3d6a"
+    contract_commit: "1237f443606d2b06c10778fbe1293257d048874e"
     schema_commit: "56ff1979f32845f1c90e0b439d60744f8afef322"
     runtime_branch: "init/runtime-scaffold"
     runtime_commit: "fa4365571612ce9e583af27174ca3322aad0b740"
     runtime_tests_commit: "de0c8429bd7a56f7ba616b90028bf70999bdfd2f"
+    runtime_lock_commit: "98926007268784a187217e138555b3c84f785703"
+    runtime_lock_verifier_commit: "e0a7867965c7812b6315503e707647b8d2530806"
 
   required_validation:
-    - "Run runtime unit tests in CI."
+    - "Run runtime unit tests in CI after all contract lock changes."
     - "Run SEMANTIC-CONFIRM-02 against the exact candidate runtime commit."
+    - "Run candidate structural compatibility check against exact candidate commits."
     - "Check contract/schema/runtime consistency."
     - "Inspect contracts PR divergence and resolve mergeability without discarding main-branch commits."
     - "Review the timeout contract separately before claiming timeout enforcement."
