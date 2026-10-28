@@ -1,58 +1,48 @@
-from pathlib import Path
 from urllib.request import Request, urlopen
 
-CONTRACT_URL = (
-    "https://raw.githubusercontent.com/Badreddine1982/"
-    "vanguard-contracts/775c9850d6a2231cc619b3d64570ca9f08429635/"
-    "contracts/runtime/execution.v1.yaml"
-)
-RUNTIME_URL = (
-    "https://raw.githubusercontent.com/Badreddine1982/"
-    "vanguard-runtime/9ed82687afe24615ad41894934efa78baf07b89b/"
-    "src/execution.py"
-)
+CONTRACT_SHA = "1237f443606d2b06c10778fbe1293257d048874e"
+RUNTIME_SHA = "fa4365571612ce9e583af27174ca3322aad0b740"
+CONTRACT_URL = "https://raw.githubusercontent.com/Badreddine1982/vanguard-contracts/" + CONTRACT_SHA + "/contracts/runtime/execution.v1.yaml"
+RUNTIME_URL = "https://raw.githubusercontent.com/Badreddine1982/vanguard-runtime/" + RUNTIME_SHA + "/src/execution.py"
+
 
 def fetch(url):
-    req = Request(url, headers={"User-Agent": "vanguard-compatibility-confirmation"})
-    with urlopen(req, timeout=15) as response:
+    request = Request(url, headers={"User-Agent": "vanguard-compatibility-confirmation"})
+    with urlopen(request, timeout=15) as response:
         return response.read().decode("utf-8")
 
-def require(text, fragments, label):
-    missing = [item for item in fragments if item not in text]
+
+def require(source, fragments, label):
+    missing = [item for item in fragments if item not in source]
     if missing:
-        raise SystemExit(f"{label} verification failed: " + ", ".join(missing))
+        raise SystemExit(f"{label} check failed: " + ", ".join(missing))
+
 
 def main():
     contract = fetch(CONTRACT_URL)
     runtime = fetch(RUNTIME_URL)
-
     require(contract, [
-        "id: runtime.execution",
-        "version: 1.0.0",
-        "input: ExecutionRequest",
-        "output: ExecutionResult",
-        "request_id_required: true",
-        "deterministic_errors: true",
-        "timeout_required: true",
-        "success_required: true",
-        "error_code_required_on_failure: true",
+        "id: runtime.execution", "version: 1.0.0",
+        "input: ExecutionRequest", "output: ExecutionResult",
+        "audit_sink: AuditSink", "audit_event_required: true",
+        "audit_event_emission_owner: runtime",
+        "audit_event_sink_acceptance_required: true",
+        "AUDIT_SINK_FAILURE", "evidence_reference",
     ], "contract")
-
     require(runtime, [
-        "class ExecutionRequest",
+        "class ExecutionRequest", "class AuditEvent", "class AuditSink",
         "class ExecutionResult",
-        "def execute",
-        "INVALID_REQUEST",
-        "INVALID_ACTION",
-        "INVALID_TIMEOUT",
-        "return ExecutionResult(request.request_id, True)",
+        "def execute(request: ExecutionRequest, audit_sink: AuditSink)",
+        "INVALID_REQUEST", "INVALID_ACTION", "INVALID_TIMEOUT",
+        "AUDIT_SINK_FAILURE", "audit_sink.emit(event)",
+        "evidence_reference=reference",
     ], "runtime")
-
-    print("COMPATIBILITY CONFIRMATION: PASS")
-    print("source: vanguard-contracts@775c9850d6a2231cc619b3d64570ca9f08429635")
-    print("target: vanguard-runtime@9ed82687afe24615ad41894934efa78baf07b89b")
-    print("contract/runtime boundary: structurally compatible")
+    print("CANDIDATE COMPATIBILITY CHECK: PASS")
+    print("contract commit: " + CONTRACT_SHA)
+    print("runtime commit: " + RUNTIME_SHA)
+    print("scope: structural boundary only")
     print("adoption: unchanged")
+
 
 if __name__ == "__main__":
     main()
