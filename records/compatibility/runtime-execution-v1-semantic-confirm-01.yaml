@@ -1,0 +1,49 @@
+semantic_confirmation:
+  id: runtime.execution.v1.semantic-confirm-01
+  schema: "v0.1"
+  status: failed
+
+  source:
+    component: vanguard-contracts
+    repository: Badreddine1982/vanguard-contracts
+    contract:
+      id: runtime.execution
+      version: 1.0.0
+      commit: 775c9850d6a2231cc619b3d64570ca9f08429635
+
+  target:
+    component: vanguard-runtime
+    repository: Badreddine1982/vanguard-runtime
+    commit: 9ed82687afe24615ad41894934efa78baf07b89b
+
+  test:
+    id: SEMANTIC-CONFIRM-01
+    mode: independent_runtime_execution
+    checks:
+      valid_request: pass
+      deterministic_errors: pass
+      timeout_enforcement: pass
+      audit_event_observable: fail
+
+  failure:
+    category: contract_runtime_semantic_gap
+    statement: >
+      The contract requires an observable audit event, but the pinned
+      ExecutionResult/execute implementation exposes no observable audit
+      event field or reference.
+    adoption_blocked: true
+
+  governance:
+    rule: "Probability may enter the loop, but it does not leave the loop as truth without confirmation."
+    automatic_adoption: false
+    real_contract_state_changed: false
+
+  disposition:
+    retain_as_evidence: true
+    classify_as_potential_error: true
+    adopt_as_fact: false
+    next:
+      - define the audit-event semantic boundary explicitly
+      - implement or revise the runtime behavior
+      - rerun SEMANTIC-CONFIRM-01
+      - do not promote to ADOPTED before semantic confirmation

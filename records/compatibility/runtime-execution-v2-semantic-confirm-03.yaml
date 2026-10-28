@@ -1,0 +1,67 @@
+semantic_confirmation:
+  id: runtime.execution.v2.semantic-confirm-03
+  schema: "v0.1"
+  status: confirmed_within_declared_test_scope
+
+  source:
+    component: vanguard-contracts
+    repository: Badreddine1982/vanguard-contracts
+    contract:
+      id: runtime.execution
+      version: 2.0.0
+      path: contracts/runtime/execution.v2.yaml
+      commit: 108b5b2cf52932d5807144b4b6ba00f4065e2498
+
+  target:
+    component: vanguard-runtime
+    repository: Badreddine1982/vanguard-runtime
+    branch: init/runtime-scaffold
+    tested_runtime_commit: 1632318bf8d1e5a26b379f206fe3ab49d5740371
+    latest_runtime_branch_commit_at_recording: a8fbb28a1107304c17c34975b14f8983359e1812
+
+  tests:
+    runtime_workflow:
+      run_id: 40654863757
+      run_number: 42
+      conclusion: success
+      url: "https://github.com/Badreddine1982/vanguard-runtime/actions/runs/40654863757"
+      scope:
+        - contract lock verification
+        - lifecycle verification and fixture
+        - runtime unit tests
+        - explicit adoption gate
+
+    semantic_confirmation:
+      workflow: SEMANTIC-CONFIRM-03
+      run_id: 40654972047
+      run_number: 39
+      conclusion: success
+      url: "https://github.com/Badreddine1982/vanguard-engineering-record/actions/runs/40654972047"
+
+    structural_compatibility:
+      workflow: Compatibility Confirmation
+      run_id: 40654972262
+      run_number: 47
+      conclusion: success
+      url: "https://github.com/Badreddine1982/vanguard-engineering-record/actions/runs/40654972262"
+      scope: "Structural assertions against the exact v2 contract and runtime commits."
+
+  checks:
+    valid_request_and_audit_event: pass
+    deterministic_validation_errors_and_audit_events: pass
+    cooperative_long_running_action_cancelled_at_deadline: pass
+    cancellation_suppression_reported_as_EXECUTION_STATE_UNKNOWN: pass
+    audit_sink_failure_fails_closed: pass
+    schema_contract_version_alignment: pass
+    production_side_effect_containment: not_confirmed
+    hard_preemption_of_non_cooperative_executor: not_guaranteed
+
+  interpretation:
+    - "The tested timeout is an asyncio cooperative cancellation deadline, not an operating-system hard kill."
+    - "An executor that suppresses cancellation is reported as EXECUTION_STATE_UNKNOWN; its side effects remain unknown."
+    - "Production executors must document and test their own cancellation and side-effect guarantees."
+
+  governance:
+    adoption: not_adopted
+    automatic_adoption: false
+    merge_authorized: false

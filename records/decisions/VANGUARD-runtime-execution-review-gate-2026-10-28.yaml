@@ -1,0 +1,95 @@
+review_gate:
+  id: vanguard-runtime-execution-review-gate-2026-10-28
+  date: 2026-10-28
+  status: candidate_checks_passed_merge_review_blocked_by_branch_divergence
+
+  candidate:
+    contract:
+      repository: Badreddine1982/vanguard-contracts
+      path: contracts/runtime/execution.v2.yaml
+      version: 2.0.0
+      commit: "9d19360a5cda96a0ca8f07275663ca50f7c66788"
+      schema_path: contracts/runtime/execution.v2.schema.yaml
+      schema_update_commit: "8fa52f351a7b2d1f57e3a9ad0bb6ea3d47156014"
+      versioning_policy: VERSIONING.md
+    runtime:
+      repository: Badreddine1982/vanguard-runtime
+      branch: init/runtime-scaffold
+      tested_code_commit: "1632318bf8d1e5a26b379f206fe3ab49d5740371"
+      latest_branch_commit: "5cfb00317fda4c54a50a0ef900bb0ec22ad02a16"
+      contract_lock_commit: "5cfb00317fda4c54a50a0ef900bb0ec22ad02a16"
+    evidence_record:
+      path: records/compatibility/runtime-execution-v2-semantic-confirm-04.yaml
+
+  pull_requests:
+    contracts:
+      url: "https://github.com/Badreddine1982/vanguard-contracts/pull/1"
+      state: open
+      draft: true
+      merged: false
+      branch_relation_to_main:
+        ahead_by: 14
+        behind_by: 4
+      merge_gate: blocked_until_main_only_documents_are_preserved_and_diff_reviewed
+    runtime:
+      url: "https://github.com/Badreddine1982/vanguard-runtime/pull/1"
+      state: open
+      draft: true
+      merged: false
+      branch_relation_to_main:
+        ahead_by: 31
+        behind_by: 0
+    engineering_record:
+      url: "https://github.com/Badreddine1982/vanguard-engineering-record/pull/1"
+      state: open
+      draft: true
+      merged: false
+      branch_relation_to_main:
+        ahead_by: 37
+        behind_by: 11
+      merge_gate: blocked_until_main_only_records_are_preserved_and_diff_reviewed
+
+  evidence:
+    runtime_workflow:
+      run_id: 40655171473
+      run_number: 44
+      conclusion: success
+      url: "https://github.com/Badreddine1982/vanguard-runtime/actions/runs/40655171473"
+    semantic_confirmation:
+      workflow: SEMANTIC-CONFIRM-03
+      run_id: 40655177057
+      run_number: 46
+      conclusion: success
+      url: "https://github.com/Badreddine1982/vanguard-engineering-record/actions/runs/40655177057"
+    structural_compatibility:
+      workflow: Compatibility Confirmation
+      run_id: 40655177046
+      run_number: 54
+      conclusion: success
+      url: "https://github.com/Badreddine1982/vanguard-engineering-record/actions/runs/40655177046"
+
+  confirmed_candidate_behaviors:
+    - "Runtime workflow passes with contract v2 pinned by immutable commit."
+    - "Positive timeout budget is enforced for cooperative async execution."
+    - "A long-running cooperative action is cancelled at the deadline."
+    - "Cancellation suppression maps to EXECUTION_STATE_UNKNOWN rather than claiming successful cancellation."
+    - "Audit events are emitted for validation, timeout, uncertain completion, and audit-sink failure paths."
+    - "Structural compatibility passes for the aligned contract v2/runtime candidate pair."
+
+  limitations:
+    - "Timeout is cooperative asyncio cancellation, not hard preemption of arbitrary external processes."
+    - "Production executor side effects and cancellation guarantees remain adapter-specific and unverified."
+    - "A synchronous AuditSink can block the event loop; production sinks need bounded/non-blocking behavior or isolation."
+    - "The candidate runtime remains a scaffold, not a complete production action dispatcher."
+
+  blockers_before_merge:
+    - "Review and preserve the four contracts documents present only on contracts main; branch is 4 commits behind main."
+    - "Review and preserve Dynamic Admissibility, KMA, and Snowball transfer records present only on engineering-record main; branch is 11 commits behind main."
+    - "Recheck live PR heads, mergeability, and checks after branch reconciliation."
+    - "Keep all PRs draft and unmerged until branch preservation and review gates are complete."
+
+  governance:
+    adoption: not_adopted
+    automatic_adoption: false
+    merge_authorized: false
+    note: "Passing candidate checks is not adoption. Mergeability is point-in-time metadata."
