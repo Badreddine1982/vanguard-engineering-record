@@ -1,6 +1,6 @@
 from urllib.request import Request, urlopen
 
-CONTRACT_SHA = "108b5b2cf52932d5807144b4b6ba00f4065e2498"
+CONTRACT_SHA = "9d19360a5cda96a0ca8f07275663ca50f7c66788"
 RUNTIME_SHA = "1632318bf8d1e5a26b379f206fe3ab49d5740371"
 CONTRACT_URL = (
     "https://raw.githubusercontent.com/Badreddine1982/vanguard-contracts/"
